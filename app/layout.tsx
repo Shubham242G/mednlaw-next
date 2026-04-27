@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Playfair_Display } from 'next/font/google';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ChatBot from "./components/bot/bot";
+
+const playfair = Playfair_Display({ 
+  subsets: ['latin'],
+  variable: '--font-playfair'
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}:Readonly<{
   children: React.ReactNode;
 }>) {
   return (
@@ -27,7 +36,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full">
+        <div className="flex flex-col">
+          <Navbar />
+            {children}
+            <ChatBot/>
+          <Footer/>
+        </div>
+      </body>
     </html>
   );
 }
