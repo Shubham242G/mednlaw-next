@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import WebsiteFAQ from "@/app/components/FaqSection";
 
 interface Partner {
   id: number;
@@ -315,6 +316,9 @@ const DueDiligenceAndValuation = () => {
           </Link>
         </div>
       </section>
+
+      <WebsiteFAQ pageUrl="/services/due-diligence-and-valuation" />
+      
     </div>
   );
 };

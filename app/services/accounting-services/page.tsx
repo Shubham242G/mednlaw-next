@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import WebsiteFAQ from "@/app/components/FaqSection";
 
 interface Partner {
   id: number;
@@ -411,6 +412,9 @@ const AccountingServicesPage = () => {
           </Link>
         </div>
       </section>
+
+      <WebsiteFAQ pageUrl="/services/accounting-services" />
+
     </div>
   );
 };

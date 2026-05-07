@@ -5,6 +5,7 @@ import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import WebsiteFAQ from "../components/FaqSection";
 
 interface Blog {
   _id: string;
@@ -210,6 +211,8 @@ const BlogsPage = () => {
           </motion.div>
         )}
       </div>
+            <WebsiteFAQ pageUrl="/blogs" />
+      
     </section>
   );
 };

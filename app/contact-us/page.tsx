@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import ContactForm from "../components/ContactForm";
+import WebsiteFAQ from "../components/FaqSection";
 
 const ContactUs = () => {
   const formRef = useRef<HTMLDivElement>(null);
@@ -77,6 +78,9 @@ const ContactUs = () => {
           <ContactForm />
         </motion.div>
       </div>
+
+            <WebsiteFAQ pageUrl="/contact-us" />
+      
     </section>
   );
 };

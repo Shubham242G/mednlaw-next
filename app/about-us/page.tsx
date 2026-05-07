@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import WebsiteFAQ from "../components/FaqSection";
 
 // Add type for the count up hook parameters
 const useCountUp = (end: number, duration: number = 1500) => {
@@ -374,6 +375,9 @@ const AboutUs = () => {
           </div>
         </Link>
       </section>
+
+            <WebsiteFAQ pageUrl="/about-us" />
+      
     </div>
   );
 };

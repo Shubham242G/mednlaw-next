@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import WebsiteFAQ from "@/app/components/FaqSection";
 
 interface Partner {
   id: number;
@@ -370,6 +371,9 @@ const ComplianceManagementPage = () => {
           </Link>
         </div>
       </section>
+
+      <WebsiteFAQ pageUrl="/services/compliance-management" />
+      
     </div>
   );
 };

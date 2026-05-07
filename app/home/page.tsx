@@ -6,6 +6,7 @@ import ExpertiseSection from "../home/ExpertiseSection";
 import PeopleSection from "../home/PeopleSection";
 import ThoughtLeadershipSection from "../home/ThoughtLeadershipSection";
 import ContactForm from "../home/Contact";
+import WebsiteFAQ from "../components/FaqSection";
 
 export default function Home() {
   return (
@@ -34,6 +35,10 @@ export default function Home() {
       <section className="bg-teal-200">
         <ContactForm />
       </section>
+
+       {/* FAQ Section - ADD THIS AT THE END */}
+      <WebsiteFAQ pageUrl="/" />
+    
     </div>
   );
 }

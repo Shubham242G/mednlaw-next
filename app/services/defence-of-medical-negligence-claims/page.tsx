@@ -5,6 +5,7 @@ import { CheckCircle, Shield, Users, Scale, Search, MessageCircle } from "lucide
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import WebsiteFAQ from "@/app/components/FaqSection";
 
 interface Partner {
   id: number;
@@ -302,6 +303,9 @@ const DefenceAgainstMedicalNegligence = () => {
           </motion.div>
         </div>
       </section>
+
+      <WebsiteFAQ pageUrl="/services/defence-of-medical-negligence-claims" />
+      
     </div>
   );
 };

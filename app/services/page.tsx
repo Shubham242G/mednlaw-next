@@ -4,6 +4,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import WebsiteFAQ from "../components/FaqSection";
 
 interface Service {
   name: string;
@@ -132,6 +133,9 @@ const ServicesSection = () => {
           ))}
         </div>
       </div>
+
+      <WebsiteFAQ pageUrl="/services" />
+      
     </section>
   );
 };

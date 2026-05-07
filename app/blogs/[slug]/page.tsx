@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import WebsiteFAQ from "@/app/components/FaqSection";
 
 interface Blog {
   _id: string;
@@ -14,9 +15,21 @@ interface Blog {
   date: string;
   images?: string[];
   seoFocusKeyword?: string;
+  slug: string;
+  faqs?: string[] | FAQ[]; 
   seoTitle?: string;
   seoMetaDescription?: string;
 }
+
+export interface FAQ {
+  _id: string;
+  question: string;
+  answer: string;
+  order: number;
+  isActive: boolean;
+}
+
+
 
 const BlogPostPage = () => {
   const params = useParams();
@@ -165,6 +178,14 @@ const BlogPostPage = () => {
             </div>
           )}
         </motion.article>
+
+         <article>
+      <h1>{blog.title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+      
+      {/* Blog-specific FAQs */}
+      <WebsiteFAQ pageUrl={`/blogs/${blog.slug}`} />
+    </article>
       </div>
     </section>
   );
