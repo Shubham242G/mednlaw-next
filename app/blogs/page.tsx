@@ -12,6 +12,7 @@ interface Blog {
   summary: string;
   date: string;
   images?: string[];
+  slug?: string;
 }
 
 const cardVariants: Variants = {
@@ -149,16 +150,16 @@ const BlogsPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {blogs.map((blog, i) => (
             <motion.div
-              key={blog._id}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              whileHover={{ scale: 1.05, boxShadow: "0px 10px 25px rgba(23, 173, 161, 0.3)" }}
-              viewport={{ once: true }}
-              onClick={() => router.push(`/blogs/${blog._id}`)}
-              className="cursor-pointer bg-white/90 backdrop-blur-md border border-[#17ADA1]/20 rounded-2xl p-8 hover:bg-white hover:border-[#17ADA1]/60 group overflow-hidden relative transition-all duration-300"
-            >
+  key={blog._id}
+  custom={i}
+  variants={cardVariants}
+  initial="hidden"
+  whileInView="visible"
+  whileHover={{ scale: 1.05, boxShadow: "0px 10px 25px rgba(23, 173, 161, 0.3)" }}
+  viewport={{ once: true }}
+  onClick={() => router.push(`/blogs/${blog.slug || blog._id}`)} // CHANGED: use slug if exists, fallback to ID
+  className="cursor-pointer bg-white/90 backdrop-blur-md border border-[#17ADA1]/20 rounded-2xl p-8 hover:bg-white hover:border-[#17ADA1]/60 group overflow-hidden relative transition-all duration-300"
+>
               {blog.images && blog.images[0] && (
                 <div className="w-full h-48 rounded-xl overflow-hidden mb-6 group-hover:scale-105 transition-transform duration-500 relative">
                   <Image 
