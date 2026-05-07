@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import WebsiteFAQ from "@/app/components/FaqSection";
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { FAQSchema } from "@/app/components/SchemaGenerator";
 
 interface Partner {
   id: number;
@@ -18,6 +22,22 @@ const HealthcareFacilitiesPage = () => {
     { id: 4, icon: "/assets/brand5.png" },
   ];
 
+  const [faqs, setFaqs] = useState([]);
+        
+  useEffect(() => {
+    const fetchFAQs = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/faq/page/services/design-and-construction-of-healthcare-facilities`
+        );
+        setFaqs(response.data.faqs || []);
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      }
+    };
+    fetchFAQs();
+  }, []);
+
   const handleWhatsAppClick = () => {
     const phoneNumber = "+919266877793";
     const message = "Hi, I'm interested in learning more about your legal services.";
@@ -27,8 +47,8 @@ const HealthcareFacilitiesPage = () => {
 
   const approachSteps = [
     {
-      title: "Assessment",
-      desc: "Comprehensive evaluation of your facility needs, site conditions, regulatory requirements, and project goals.",
+      title: "Compliance Assessment & Audit",
+      desc: "We conduct detailed audits of existing healthcare facilities to identify gaps in compliance, infrastructure, and operational standards.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -36,8 +56,8 @@ const HealthcareFacilitiesPage = () => {
       ),
     },
     {
-      title: "Strategy",
-      desc: "Development of a customized project plan addressing compliance, design, timeline, and budget considerations.",
+      title: "Legal Advisory for Renovation",
+      desc: "Renovation of healthcare facilities involves multiple approvals and regulatory clearances. Our legal team provides expert guidance to ensure that facilities follow all statutory norms during upgrades.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -45,8 +65,8 @@ const HealthcareFacilitiesPage = () => {
       ),
     },
     {
-      title: "Research",
-      desc: "Thorough analysis of applicable building codes, healthcare regulations, and best practices for your facility type.",
+      title: "Infrastructure Planning & Optimization",
+      desc: "We assist in designing efficient layouts for healthcare facilities in India, ensuring proper patient flow, infection control, and space utilization.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -54,17 +74,17 @@ const HealthcareFacilitiesPage = () => {
       ),
     },
     {
-      title: "Design",
-      desc: "Creation of detailed architectural and engineering plans that meet all regulatory and functional requirements.",
+      title: "Licensing & Regulatory Approvals",
+      desc: "Obtaining licenses is a critical step in upgrading healthcare facilities. We handle documentation and approvals required for private healthcare facilities, ensuring smooth and timely compliance.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       ),
     },
     {
-      title: "Approval",
-      desc: "Assistance with obtaining necessary permits, licenses, and regulatory approvals from all relevant authorities.",
+      title: "Risk Management & Compliance Monitoring",
+      desc: "Post-renovation, continuous monitoring is essential. Our services ensure that healthcare facilities in India remain compliant with evolving laws and standards.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -72,11 +92,11 @@ const HealthcareFacilitiesPage = () => {
       ),
     },
     {
-      title: "Construction Oversight",
-      desc: "Ongoing monitoring and support during construction to ensure compliance and address any issues that arise.",
+      title: "Complete Legal & Compliance Support",
+      desc: "We ensure that your healthcare facilities are not only modernized but also legally secure and future-ready.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
         </svg>
       ),
     },
@@ -84,33 +104,35 @@ const HealthcareFacilitiesPage = () => {
 
   const facilityTypes = [
     {
-      title: "General Hospitals",
-      desc: "Comprehensive acute care facilities with multiple departments including emergency, surgery, imaging, and inpatient units requiring complex regulatory compliance.",
+      title: "Clinical Establishments Act Compliance",
+      desc: "Registration and standards for healthcare facilities under the Clinical Establishments (Registration and Regulation) Act.",
     },
     {
-      title: "Specialty Hospitals",
-      desc: "Focused care facilities for specific conditions or populations such as cardiac centers, cancer treatment facilities, or pediatric hospitals.",
+      title: "National Building Code (NBC) Guidelines",
+      desc: "Adherence to structural, fire safety, and accessibility standards as per NBC requirements.",
     },
     {
-      title: "Outpatient Clinics",
-      desc: "Ambulatory care centers providing diagnostic, treatment, and minor surgical services without overnight stays.",
+      title: "Biomedical Waste Management Rules",
+      desc: "Proper handling, treatment, and disposal of biomedical waste in compliance with regulatory standards.",
     },
     {
-      title: "Diagnostic Centers",
-      desc: "Specialized facilities for imaging and laboratory services requiring specific equipment rooms, shielding, and safety protocols.",
+      title: "Fire Safety Regulations",
+      desc: "Implementation of fire safety systems, evacuation plans, and compliance with local fire authority requirements.",
     },
     {
-      title: "Rehabilitation Centers",
-      desc: "Facilities focused on physical therapy, occupational therapy, and recovery services with specialized treatment spaces and equipment.",
-    },
-    {
-      title: "Long-Term Care Facilities",
-      desc: "Nursing homes and assisted living facilities requiring residential features combined with medical care capabilities and safety standards.",
+      title: "Local Municipal and Zoning Laws",
+      desc: "Obtaining necessary permits and approvals from local municipal authorities for healthcare facility operations.",
     },
   ];
 
   return (
     <div className="min-h-screen bg-white">
+      <Head>
+        <title>Healthcare Facilities Renovation Legal Support in India | Compliance Experts</title>
+        <meta name="description" content="Expert legal support for healthcare facilities renovation in India. Ensure compliance with Clinical Establishments Act, fire safety & licensing approvals." />
+      </Head>
+
+      {faqs.length > 0 && <FAQSchema faqs={faqs} />}  
       {/* Hero Section */}
       <section
         className="relative w-full bg-cover bg-center overflow-hidden pt-28 pb-20 px-4"
@@ -121,19 +143,16 @@ const HealthcareFacilitiesPage = () => {
           backgroundPosition: "center",
         }}
       >
-        {/* Dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-[#17ADA1]/30" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Design & Construction of Healthcare Facilities
+            Healthcare Facilities in India – Renovation & Compliance Legal Support
           </h1>
           <p className="text-lg text-white mb-10 leading-relaxed">
-            Navigate the complex regulations and requirements for healthcare facility design and 
-            construction with expert guidance from MednLaw.
+            The demand for modern, compliant, and patient-centric healthcare facilities is rapidly increasing across India. With evolving regulations, patient expectations, and technological advancements, upgrading healthcare facilities in India is no longer optional—it is essential.
           </p>
 
-          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -151,46 +170,27 @@ const HealthcareFacilitiesPage = () => {
         </div>
       </section>
 
-      {/* What is Design & Construction Section */}
+      {/* Why Upgrading Healthcare Facilities is Critical */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Left Content */}
             <div className="bg-[#17ada1] text-white p-10 md:p-12 rounded-xl shadow-xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                What is Design & Construction of Healthcare Facilities?
+                Why Upgrading Healthcare Facilities is Critical in India
               </h2>
               <div className="space-y-4 leading-relaxed text-sm">
                 <p>
-                  Designing and constructing healthcare facilities involves creating spaces that meet stringent 
-                  regulatory requirements while providing optimal patient care environments. From hospitals and clinics 
-                  to specialized treatment centers, every aspect must comply with healthcare building codes, safety 
-                  standards, and operational requirements.
+                  India's healthcare sector is undergoing a major transformation. Many existing healthcare facilities in India were established under older regulatory frameworks and may not meet current compliance standards.
                 </p>
                 <p>
-                  Healthcare facility design requires careful planning of patient flow, infection control measures, 
-                  medical equipment integration, and accessibility standards. Construction must adhere to specific 
-                  guidelines for ventilation, electrical systems, plumbing, and emergency preparedness.
+                  Upgrading healthcare facilities helps ensure compliance with updated laws and regulations, improve patient safety and care standards, enhance operational efficiency, and strengthen institutional credibility.
                 </p>
                 <p>
-                  The process involves coordination between architects, engineers, healthcare administrators, and 
-                  legal experts to ensure compliance with federal, state, and local regulations including FGI Guidelines, 
-                  OSHA requirements, ADA standards, and state health department codes.
-                </p>
-                <p>
-                  Whether you're building a new facility, renovating an existing space, or expanding your practice, 
-                  proper planning and regulatory compliance are essential. Healthcare facilities must meet specific 
-                  requirements for infection control, patient safety, staff workflow, and emergency response capabilities.
-                </p>
-                <p>
-                  MednLaw provides comprehensive guidance throughout the design and construction process, helping you 
-                  navigate complex regulations, obtain necessary permits, and ensure your facility meets all legal and 
-                  operational requirements from concept to completion.
+                  For private healthcare facilities, renovation also plays a key role in maintaining competitiveness and delivering high-quality patient experiences.
                 </p>
               </div>
             </div>
 
-            {/* Right Image */}
             <div className="relative">
               <div className="overflow-hidden h-[450px] flex items-center justify-center">
                 <Image 
@@ -206,23 +206,31 @@ const HealthcareFacilitiesPage = () => {
         </div>
       </section>
 
-      {/* Why MednLaw Section */}
+      {/* Legal Framework */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why MednLaw?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Legal Framework Governing Healthcare Facilities in India</h2>
           <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed mb-10 text-base">
-            Healthcare facility design and construction requires specialized knowledge of medical regulations, building 
-            codes, and operational requirements. MednLaw combines legal expertise with healthcare industry knowledge to 
-            guide you through every phase of your facility project. Our team ensures compliance with FGI Guidelines, 
-            OSHA standards, ADA requirements, and state-specific regulations while helping you create efficient, 
-            patient-centered spaces that meet current needs and adapt to future healthcare delivery models.
+            Renovating or setting up healthcare facilities in India requires strict adherence to multiple laws and guidelines. Our expertise ensures that healthcare facilities are designed and upgraded in full compliance with these legal requirements.
           </p>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Clinical Establishments Act</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Registration and standards for healthcare facilities under the Clinical Establishments (Registration and Regulation) Act.</p>
+            </div>
+            <div className="bg-white border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">National Building Code (NBC)</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Guidelines for structural safety, fire safety, and accessibility in healthcare facilities.</p>
+            </div>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" as const }}
-            className="flex-shrink-0 w-full md:w-auto"
+            className="flex-shrink-0 w-full md:w-auto mt-8"
           >
             <motion.button
               whileHover={{ scale: 1.06 }}
@@ -237,45 +245,10 @@ const HealthcareFacilitiesPage = () => {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Our Healthcare Facilities Renovation Services */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Personalized Healthcare Designs</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Custom facility designs tailored to your specific medical specialty, patient population, and 
-                operational requirements.
-              </p>
-            </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Experienced Construction Consultants</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Expert guidance from professionals with extensive healthcare construction experience and regulatory 
-                knowledge.
-              </p>
-            </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Innovative Architecture Solutions</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Modern, evidence-based design approaches that enhance patient outcomes and operational efficiency.
-              </p>
-            </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">End-to-End Project Management</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Comprehensive oversight from initial planning through construction completion and facility 
-                commissioning.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The MednLaw Approach */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">The MednLaw Approach</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Our Healthcare Facilities Renovation Services</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {approachSteps.map(({ title, desc, icon }, i) => (
               <div
@@ -293,13 +266,13 @@ const HealthcareFacilitiesPage = () => {
         </div>
       </section>
 
-      {/* Types of Healthcare Facilities */}
-      <section className="py-20 px-4 bg-white">
+      {/* Key Regulations */}
+      <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
-            Types of Design & Construction of Healthcare Facilities
+            Key Regulations for Healthcare Facilities in India
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {facilityTypes.map((facility, i) => (
               <div
                 key={i}
@@ -313,7 +286,7 @@ const HealthcareFacilitiesPage = () => {
         </div>
       </section>
 
-      {/* Designing The Future Section */}
+      {/* Designing The Future */}
       <section className="py-20 px-4 bg-[#17ada1] text-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -330,21 +303,13 @@ const HealthcareFacilitiesPage = () => {
               </h2>
               <div className="space-y-5 text-sm leading-relaxed">
                 <p className="text-white/95">
-                  Modern healthcare facilities must balance multiple priorities: patient safety, operational
-                  efficiency, regulatory compliance, and healing environments. The design and construction process 
-                  requires meticulous attention to infection control, accessibility, technology integration, and 
-                  future adaptability.
+                  Modern healthcare facilities must balance multiple priorities: patient safety, operational efficiency, regulatory compliance, and healing environments. The design and construction process requires meticulous attention to infection control, accessibility, technology integration, and future adaptability.
                 </p>
                 <p className="text-white/95">
-                  MednLaw understands that every healthcare facility is unique, with specific patient populations, 
-                  clinical workflows, and community needs. Our expertise spans from small private practices to 
-                  large hospital systems, ensuring your facility meets current standards while remaining flexible 
-                  for future growth.
+                  MednLaw understands that every healthcare facility is unique, with specific patient populations, clinical workflows, and community needs. Our expertise spans from small private practices to large hospital systems, ensuring your facility meets current standards while remaining flexible for future growth.
                 </p>
                 <p className="text-white/95">
-                  We navigate the complex landscape of building codes, healthcare regulations, and accreditation 
-                  requirements, allowing you to focus on your mission of providing excellent patient care in a 
-                  safe, efficient, and welcoming environment.
+                  We navigate the complex landscape of building codes, healthcare regulations, and accreditation requirements, allowing you to focus on your mission of providing excellent patient care in a safe, efficient, and welcoming environment.
                 </p>
               </div>
             </div>
@@ -389,12 +354,10 @@ const HealthcareFacilitiesPage = () => {
       <section className="py-20 px-4 bg-gradient-to-r from-[#17ada1] to-[#138f85] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            We are here for you: Every Step of Your Healthcare Compliance Journey
+            Get Expert Healthcare Facilities Renovation Support Today
           </h2>
           <p className="text-white/95 leading-relaxed text-base mb-10 max-w-3xl mx-auto">
-            Whether you need guidance on structuring healthcare facilities or navigating complex construction 
-            regulations, MednLaw offers exceptional legal support so you can focus on patient care. From planning 
-            to completion, we're here to protect your investment and ensure regulatory compliance.
+            Whether you need guidance on structuring healthcare facilities or navigating complex construction regulations, MednLaw offers exceptional legal support so you can focus on patient care. From planning to completion, we're here to protect your investment and ensure regulatory compliance.
           </p>
           <Link href="/contact">
             <button className="bg-white hover:bg-gray-100 text-[#17ada1] px-10 py-4 rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-xl inline-flex items-center">

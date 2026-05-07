@@ -90,12 +90,12 @@ const ContactForm = () => {
           >
             Contact mednlaw
           </motion.span>
-          <h1 
+          <h2 
             className="text-[#17ada1] text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Let's discuss your healthcare legal needs
-          </h1>
+          </h2>
           <p className="text-gray-600 text-base leading-relaxed max-w-3xl mx-auto">
             Fill out the form below and we'll get back to you shortly.
           </p>

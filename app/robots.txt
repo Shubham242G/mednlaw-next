@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /cgi-bin/
+Disallow: /?s=
+Disallow: /search/
+
+# Sitemap
+Sitemap: https://www.mednlaw.in/sitemap.xml

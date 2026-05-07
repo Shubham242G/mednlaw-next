@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CheckCircle, Shield, Users, Scale, Search, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import WebsiteFAQ from "@/app/components/FaqSection";
+import Head from "next/head";
+import { FAQSchema } from "../../components/SchemaGenerator";
+import axios from "axios";
 
 interface Partner {
   id: number;
@@ -19,6 +22,24 @@ const DefenceAgainstMedicalNegligence = () => {
     { id: 3, icon: "/assets/brand4.png" },
     { id: 4, icon: "/assets/brand5.png" },
   ];
+
+   const [faqs, setFaqs] = useState([]);
+
+  useEffect(() => {
+    const fetchFAQs = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/faq/page/services/defence-of-medical-negligence-claims`
+        );
+        setFaqs(response.data.faqs || []);
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      }
+    };
+    fetchFAQs();
+  }, []);
+
+  
 
   const handleWhatsAppClick = () => {
     const phoneNumber = "+919266877793";
@@ -78,7 +99,12 @@ const DefenceAgainstMedicalNegligence = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+      <Head>
+        <title>Medical Negligence Lawyers in Delhi NCR | Expert Defense</title>
+        <meta name="description" content="Facing a medical negligence case in Delhi NCR? Get expert legal defense with fast, confidential support. Speak to a lawyer today." />
+      </Head>
+      {/* Add FAQ Schema - only if FAQs exist */}
+{faqs.length > 0 && <FAQSchema faqs={faqs} />}      
       <section
         className="relative w-full bg-cover bg-center overflow-hidden pt-28 pb-20 px-4"
         style={{

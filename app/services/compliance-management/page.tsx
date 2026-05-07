@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import WebsiteFAQ from "@/app/components/FaqSection";
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { FAQSchema } from "@/app/components/SchemaGenerator";
 
 interface Partner {
   id: number;
@@ -18,6 +22,22 @@ const ComplianceManagementPage = () => {
     { id: 4, icon: "/assets/brand5.png" },
   ];
 
+  const [faqs, setFaqs] = useState([]);
+
+  useEffect(() => {
+    const fetchFAQs = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/faq/page/services/compliance-management`
+        );
+        setFaqs(response.data.faqs || []);
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      }
+    };
+    fetchFAQs();
+  }, []);
+
   const handleWhatsAppClick = () => {
     const phoneNumber = "+919266877793";
     const message = "Hi, I'm interested in learning more about your legal services.";
@@ -27,6 +47,12 @@ const ComplianceManagementPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Head>
+        <title>Healthcare Compliance Services in Delhi NCR | Legal Experts</title>
+        <meta name="description" content="Ensure full compliance for your hospital or clinic in Delhi NCR. Avoid legal risks with expert guidance. Book your consultation today." />
+      </Head>
+
+      {faqs.length > 0 && <FAQSchema faqs={faqs} />}
       {/* Hero Section */}
       <section
         className="relative w-full bg-cover bg-center overflow-hidden pt-28 pb-20 px-4"

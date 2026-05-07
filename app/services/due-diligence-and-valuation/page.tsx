@@ -1,10 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import WebsiteFAQ from "@/app/components/FaqSection";
+import Head from "next/head";
+import axios from "axios";
+import { FAQSchema } from "@/app/components/SchemaGenerator";
 
 interface Partner {
   id: number;
@@ -19,6 +22,22 @@ const DueDiligenceAndValuation = () => {
     { id: 4, icon: "/assets/brand5.png" },
   ];
 
+  const [faqs, setFaqs] = useState([]);
+    
+  useEffect(() => {
+    const fetchFAQs = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/faq/page/services/due-diligence-and-valuation`
+        );
+        setFaqs(response.data.faqs || []);
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      }
+    };
+    fetchFAQs();
+  }, []);
+
   const handleWhatsAppClick = () => {
     const phoneNumber = "+919266877793";
     const message = "Hi, I'm interested in learning more about your legal services.";
@@ -28,8 +47,17 @@ const DueDiligenceAndValuation = () => {
 
   const approachSteps = [
     {
-      title: "Valuation",
-      desc: "Comprehensive evaluation of healthcare facilities and assets based on financial, legal, and operational metrics.",
+      title: "Legal Due Diligence",
+      desc: "Legal due diligence involves reviewing contracts, licenses, litigation history, and regulatory compliance. Our experts analyze all legal documents to identify risks and liabilities.",
+      icon: (
+        <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        </svg>
+      ),
+    },
+    {
+      title: "Financial Due Diligence",
+      desc: "This type of due diligence focuses on financial statements, tax records, and liabilities to assess the financial health of the entity.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -37,17 +65,26 @@ const DueDiligenceAndValuation = () => {
       ),
     },
     {
-      title: "Strategy",
-      desc: "Develop a well-structured plan for acquisitions, partnerships, or restructuring based on due diligence outcomes.",
+      title: "Regulatory Due Diligence",
+      desc: "Regulatory due diligence ensures compliance with Indian laws, including sector-specific regulations such as healthcare laws and corporate governance norms.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
         </svg>
       ),
     },
     {
-      title: "Research",
-      desc: "In-depth market, legal, and operational research ensures informed business decision-making.",
+      title: "Operational Due Diligence",
+      desc: "Operational due diligence evaluates internal processes, management efficiency, and business operations.",
+      icon: (
+        <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Enhanced Due Diligence",
+      desc: "Enhanced due diligence is conducted in high-risk transactions or where deeper investigation is required. This includes background checks, forensic analysis, and detailed risk assessment.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -55,29 +92,11 @@ const DueDiligenceAndValuation = () => {
       ),
     },
     {
-      title: "Collaboration",
-      desc: "We collaborate with clients and medical professionals for transparent and accurate evaluations.",
+      title: "Valuation",
+      desc: "Comprehensive evaluation of healthcare facilities and assets based on financial, legal, and operational metrics.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Communication",
-      desc: "Every step is documented and communicated clearly to maintain full client visibility.",
-      icon: (
-        <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Support",
-      desc: "Continuous post-analysis guidance to ensure smooth execution of strategic plans.",
-      icon: (
-        <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
       ),
     },
@@ -94,7 +113,13 @@ const DueDiligenceAndValuation = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+      <Head>
+        <title>Due Diligence Services for Healthcare Sector in India | Legal Experts</title>
+        <meta name="description" content="Expert due diligence services for healthcare sector in India. Legal, financial & regulatory due diligence for M&A, investments & partnerships." />
+      </Head>
+
+      {faqs.length > 0 && <FAQSchema faqs={faqs} />}   
+      
       <section
         className="relative w-full bg-cover bg-center overflow-hidden pt-28 pb-20 px-4"
         style={{
@@ -104,22 +129,15 @@ const DueDiligenceAndValuation = () => {
           backgroundPosition: "center",
         }}
       >
-        {/* Background overlay */}
         <div className="absolute inset-0 bg-black/20" />
-
-        {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/50 to-transparent" />
 
-        {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Due Diligence &amp; Valuation
+            Due Diligence Services for Healthcare Sector in India
           </h1>
           <p className="text-lg text-white mb-10 leading-relaxed">
-            Ensure compliance, accuracy, and value in your healthcare business
-            decisions with our specialized due diligence and valuation services.
-            MednLaw delivers legal and financial precision tailored for the
-            healthcare sector.
+            In today's complex business environment, conducting due diligence is essential before entering into any transaction, investment, or partnership. Whether you are acquiring a company, investing in a healthcare entity, or entering a joint venture, due diligence ensures that risks are identified, liabilities are assessed, and informed decisions are made.
           </p>
           <Link href="/contact">
             <button className="bg-[#0f766e] hover:bg-[#0d9488] text-white px-10 py-4 rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5">
@@ -129,32 +147,27 @@ const DueDiligenceAndValuation = () => {
         </div>
       </section>
 
-      {/* What is Due Diligence & Valuation */}
+      {/* What is Due Diligence Under Indian Law */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Left Content */}
             <div className="bg-[#17ada1] text-white p-10 md:p-12 rounded-xl shadow-xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                What is Due Diligence &amp; Valuation
+                What is Due Diligence Under Indian Law?
               </h2>
               <div className="space-y-4 leading-relaxed text-sm">
                 <p>
-                  Healthcare valuation and due diligence ensure your organization's
-                  assets, operations, and risks are fully understood before any
-                  strategic move. Our experts help you assess compliance, identify
-                  red flags, and validate the financial worth of medical facilities,
-                  clinics, or startups.
+                  Due diligence refers to the systematic investigation and evaluation of a business, individual, or transaction before finalizing a deal. Under Indian law, due diligence plays a crucial role in mergers and acquisitions, private equity investments, healthcare partnerships, and regulatory compliance.
                 </p>
                 <p>
-                  We provide comprehensive analysis covering regulatory compliance,
-                  financial performance, operational efficiency, and market positioning
-                  to give you complete confidence in your healthcare business decisions.
+                  The objective of due diligence is to identify legal, financial, and operational risks, verify compliance with applicable laws, assess liabilities and contractual obligations, and ensure transparency in transactions.
+                </p>
+                <p>
+                  A well-executed due diligence process protects stakeholders from unforeseen legal and financial consequences.
                 </p>
               </div>
             </div>
 
-            {/* Right Image */}
             <div className="relative">
               <div className="overflow-hidden h-[450px] flex items-center justify-center">
                 <Image 
@@ -170,22 +183,31 @@ const DueDiligenceAndValuation = () => {
         </div>
       </section>
 
-      {/* Why MednLaw Section */}
+      {/* Why Due Diligence is Important */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why MednLaw?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Due Diligence is Essential for Business Transactions</h2>
           <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed mb-10 text-base">
-            At MednLaw, we combine healthcare domain expertise with legal and
-            financial accuracy. Our team ensures every valuation, risk
-            assessment, or compliance review stands up to regulatory scrutiny and
-            industry benchmarks.
+            Conducting due diligence is not just a best practice—it is a necessity in India's regulatory environment. Failure to perform proper due diligence can lead to significant risks, including legal disputes, regulatory penalties, and financial losses.
           </p>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Informed Decision-Making</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Our due diligence law experts ensure that every aspect of the transaction is carefully reviewed and validated.</p>
+            </div>
+            <div className="bg-white border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Risk Mitigation</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Identify potential regulatory, financial, and legal risks before making major business decisions.</p>
+            </div>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" as const }}
-            className="flex-shrink-0 w-full md:w-auto"
+            className="flex-shrink-0 w-full md:w-auto mt-8"
           >
             <motion.button
               whileHover={{ scale: 1.06 }}
@@ -197,33 +219,13 @@ const DueDiligenceAndValuation = () => {
               <span className="relative">Schedule a call</span>
             </motion.button>
           </motion.div>
-
-          {/* Expertise Boxes */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-16">
-            <div className="bg-white border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Industry Expertise</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Our deep knowledge of healthcare operations allows us to assess
-                risk and valuation factors precisely.
-              </p>
-            </div>
-            <div className="bg-white border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Risk Management</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Identify potential regulatory, financial, and legal risks before
-                making major business decisions.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* The MednLaw Approach */}
+      {/* Types of Due Diligence */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
-            The MednLaw Approach
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Types of Due Diligence We Offer</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {approachSteps.map(({ title, desc, icon }, i) => (
               <div
@@ -241,11 +243,40 @@ const DueDiligenceAndValuation = () => {
         </div>
       </section>
 
-      {/* Types of Services */}
+      {/* Our Due Diligence Process */}
       <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Our Due Diligence Process</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Step 1: Scope Definition</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">We define the scope of due diligence based on the nature of the transaction and client requirements.</p>
+            </div>
+            <div className="border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Step 2: Data Collection</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Our team gathers all relevant documents, including contracts, financial records, and compliance filings.</p>
+            </div>
+            <div className="border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Step 3: Analysis & Review</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">We conduct detailed due diligence analysis, identifying risks, inconsistencies, and compliance gaps.</p>
+            </div>
+            <div className="border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Step 4: Risk Assessment</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Our due diligence law experts evaluate potential legal and financial risks associated with the transaction.</p>
+            </div>
+            <div className="border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Step 5: Reporting</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">We provide a comprehensive due diligence report with actionable insights and recommendations.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Types of Services */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
-            Types of Due Diligence &amp; Valuation Services
+            Types of Due Diligence & Valuation Services
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {serviceTypes.map((service) => (
@@ -255,8 +286,7 @@ const DueDiligenceAndValuation = () => {
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{service}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Comprehensive analysis and verification tailored to your
-                  specific healthcare business needs.
+                  Comprehensive analysis and verification tailored to your specific healthcare business needs.
                 </p>
               </div>
             ))}
@@ -299,12 +329,10 @@ const DueDiligenceAndValuation = () => {
       <section className="py-20 px-4 bg-gradient-to-r from-[#17ada1] to-[#138f85] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            We are here for you: Every Step of Your Healthcare Compliance Journey
+            Need Due Diligence Services for Your Healthcare Business?
           </h2>
           <p className="text-white/95 leading-relaxed text-base mb-10 max-w-3xl mx-auto">
-            Need precise guidance for your healthcare compliance and valuation
-            needs? Our legal and financial experts are ready to support you
-            throughout your healthcare journey.
+            Whether you're planning an acquisition, entering a partnership, or need regulatory compliance review, our due diligence experts are ready to support you throughout your healthcare journey.
           </p>
           <Link href="/contact">
             <button className="bg-white hover:bg-gray-100 text-[#17ada1] px-10 py-4 rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-xl inline-flex items-center">

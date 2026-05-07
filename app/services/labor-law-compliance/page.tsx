@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import WebsiteFAQ from "@/app/components/FaqSection";
+import Head from "next/head";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { FAQSchema } from "@/app/components/SchemaGenerator";
 
 interface Partner {
   id: number;
@@ -18,6 +22,22 @@ const LaborLawCompliance = () => {
     { id: 4, icon: "/assets/brand5.png" },
   ];
 
+  const [faqs, setFaqs] = useState([]);
+        
+  useEffect(() => {
+    const fetchFAQs = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/faq/page/services/labor-law-compliance`
+        );
+        setFaqs(response.data.faqs || []);
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      }
+    };
+    fetchFAQs();
+  }, []);
+
   const handleWhatsAppClick = () => {
     const phoneNumber = "+919266877793";
     const message = "Hi, I'm interested in learning more about your legal services.";
@@ -27,8 +47,8 @@ const LaborLawCompliance = () => {
 
   const approachSteps = [
     {
-      title: "Evaluation",
-      desc: "Comprehensive assessment of your current labor law compliance status and gap identification.",
+      title: "Compliance Audit and Assessment",
+      desc: "We conduct detailed audits to identify gaps in your current labour law compliance framework. Our team evaluates policies, documentation, and practices to ensure alignment with applicable laws.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -36,26 +56,17 @@ const LaborLawCompliance = () => {
       ),
     },
     {
-      title: "Strategy",
-      desc: "Development of customized compliance strategies tailored to your practice's unique needs.",
+      title: "Statutory Registration and Licensing",
+      desc: "Our labour law compliance services include assistance with registrations under various labour laws, ensuring that your business operates legally from the outset.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
       ),
     },
     {
-      title: "Research",
-      desc: "In-depth analysis of applicable federal, state, and local labor regulations.",
-      icon: (
-        <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-      ),
-    },
-    {
-      title: "Documentation",
-      desc: "Creation and maintenance of required policies, procedures, and employment records.",
+      title: "Documentation and Policy Drafting",
+      desc: "We develop compliant HR policies, employment contracts, and workplace guidelines as part of our labour law compliance India solutions.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -63,8 +74,17 @@ const LaborLawCompliance = () => {
       ),
     },
     {
-      title: "Implementation",
-      desc: "Seamless integration of compliance measures into your daily operations.",
+      title: "Payroll and Statutory Compliance",
+      desc: "Managing payroll in line with statutory requirements is a key aspect of labour law compliance. Our services ensure accurate calculations of wages, PF, ESI, and other contributions.",
+      icon: (
+        <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Ongoing Compliance Management",
+      desc: "Our labour law compliance services provide continuous monitoring, reporting, and updates to ensure that your organization remains compliant with evolving laws.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -72,8 +92,8 @@ const LaborLawCompliance = () => {
       ),
     },
     {
-      title: "Support",
-      desc: "Ongoing assistance and updates to ensure continued compliance with evolving regulations.",
+      title: "Representation and Legal Support",
+      desc: "In case of disputes or inspections, our team provides legal representation and advisory support as part of our labour law compliance India services.",
       icon: (
         <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -84,33 +104,39 @@ const LaborLawCompliance = () => {
 
   const laborLawTypes = [
     {
-      title: "Employment Contracts",
-      desc: "Properly drafted employment agreements that protect both employer and employee rights while ensuring legal compliance.",
+      title: "The Code on Wages, 2019",
+      desc: "Properly drafted employment agreements that protect both employer and employee rights while ensuring legal compliance with wage regulations.",
     },
     {
-      title: "Wage Regulations",
-      desc: "Adherence to minimum wage laws, overtime requirements, and proper classification of employees.",
+      title: "The Industrial Relations Code, 2020",
+      desc: "Adherence to industrial relations laws, including standing orders, dispute resolution, and trade union regulations.",
     },
     {
-      title: "Workplace Safety",
-      desc: "Implementation of OSHA standards and healthcare-specific safety protocols to protect your staff.",
+      title: "Occupational Safety, Health and Working Conditions Code, 2020",
+      desc: "Implementation of workplace safety standards and health protocols to protect your staff.",
     },
     {
-      title: "Employee Benefits",
-      desc: "Compliance with benefits regulations including health insurance, retirement plans, and leave policies.",
+      title: "The Code on Social Security, 2020",
+      desc: "Compliance with benefits regulations including health insurance, retirement plans, and social security schemes.",
     },
     {
-      title: "Leave Policies",
-      desc: "Management of FMLA, sick leave, vacation time, and other time-off requirements under law.",
+      title: "Shops and Establishments Acts",
+      desc: "State-specific compliance for working hours, leave policies, and employment conditions.",
     },
     {
-      title: "Equal Opportunity",
+      title: "Equal Opportunity Laws",
       desc: "Prevention of discrimination and creation of inclusive workplace policies that comply with civil rights laws.",
     },
   ];
 
   return (
     <div className="min-h-screen bg-white">
+      <Head>
+        <title>Labour Law Compliance Services in India | Expert Legal Support</title>
+        <meta name="description" content="Expert labour law compliance services in India. Stay compliant with Indian employment laws, avoid penalties, and protect your business with MednLaw." />
+      </Head>
+      {faqs.length > 0 && <FAQSchema faqs={faqs} />}
+      
       {/* Hero Section */}
       <section
         className="relative w-full bg-cover bg-center overflow-hidden pt-28 pb-20 px-4"
@@ -121,27 +147,22 @@ const LaborLawCompliance = () => {
           backgroundPosition: "center",
         }}
       >
-        {/* Dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-[#17ADA1]/30" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Labor Law Compliance
+            Labour Law Compliance Services in India
           </h1>
           <p className="text-lg text-white mb-10 leading-relaxed">
-            Stay compliant and focus on patient care while we handle complex labor regulations.
-            From employment contracts to workplace safety, we ensure your practice meets all
-            legal requirements and maintains a fair work environment for your team.
+            Navigating the complexities of employment regulations in India can be challenging for businesses of all sizes. With evolving statutory requirements and strict enforcement, labour law compliance is no longer optional—it is a critical component of sustainable business operations.
           </p>
 
-          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="relative w-fit mx-auto"
           >
-            {/* Glow */}
             <div className="absolute -inset-2 bg-[#17ADA1] rounded-lg blur-xl opacity-40 animate-pulse" />
 
             <Link href="/contact">
@@ -153,36 +174,27 @@ const LaborLawCompliance = () => {
         </div>
       </section>
 
-      {/* Why MednLaw Content Section */}
+      {/* What is Labour Law Compliance */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Left Content */}
             <div className="bg-[#17ada1] text-white p-10 md:p-12 rounded-xl shadow-xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Understanding Labor Law Compliance
+                What is Labour Law Compliance in India?
               </h2>
               <div className="space-y-4 leading-relaxed text-sm">
                 <p>
-                  Labor laws are designed to protect both hiring entities and employees while ensuring fair treatment.
-                  These laws cover everything from minimum wage and overtime pay to workplace safety standards. All
-                  states have laws on the books that impose workplace safety requirements and prohibit employment
-                  discrimination.
+                  Labour law compliance India refers to adherence to various employment-related laws governing wages, working conditions, employee benefits, and industrial relations. These laws are established to protect both employers and employees while ensuring fair workplace practices.
                 </p>
                 <p>
-                  However, navigating labor laws can be complicated, especially when federal and state laws differ.
-                  Healthcare practices face unique challenges including compliance with clinical staff regulations,
-                  credentialing requirements, and healthcare-specific employment laws.
+                  Key legislations include The Code on Wages, 2019, The Industrial Relations Code, 2020, The Occupational Safety, Health and Working Conditions Code, 2020, The Code on Social Security, 2020, and state-specific Shops and Establishments Acts.
                 </p>
                 <p>
-                  Many small businesses and medical practices don't have internal HR departments or dedicated compliance
-                  teams. MednLaw simplifies labor law compliance so they can focus on providing excellent care and
-                  building their business.
+                  Effective labour law compliance services ensure that your organization remains aligned with these laws and avoids penalties or legal disputes.
                 </p>
               </div>
             </div>
 
-            {/* Right Image */}
             <div className="relative">
               <div className="overflow-hidden h-[450px] flex items-center justify-center">
                 <Image 
@@ -198,21 +210,31 @@ const LaborLawCompliance = () => {
         </div>
       </section>
 
-      {/* Why MednLaw Section */}
+      {/* Why Labour Law Compliance is Essential */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why MednLaw?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Labour Law Compliance is Essential for Businesses</h2>
           <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed mb-10 text-base">
-            Labor laws protect your practice and employees. We navigate federal and state requirements, from wage
-            regulations to anti-discrimination policies. Trusted labor specialists provide expert guidance so you
-            can focus on patient care while staying compliant with evolving laws.
+            Maintaining proper labour law compliance is essential to protect your business from regulatory scrutiny and legal challenges. Non-compliance can result in penalties, operational disruptions, and reputational damage. Professional labour law compliance services help businesses proactively manage risks and maintain a compliant workplace.
           </p>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Avoid Legal Penalties and Fines</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Our compliance services help prevent costly penalties from regulatory authorities.</p>
+            </div>
+            <div className="bg-white border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Ensure Smooth Business Operations</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Proper compliance ensures uninterrupted business operations without legal disruptions.</p>
+            </div>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" as const }}
-            className="flex-shrink-0 w-full md:w-auto"
+            className="flex-shrink-0 w-full md:w-auto mt-8"
           >
             <motion.button
               whileHover={{ scale: 1.06 }}
@@ -227,42 +249,10 @@ const LaborLawCompliance = () => {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Our Labour Law Compliance Services */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Trusted Advisory</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Expert guidance on labor law compliance and best practices tailored to healthcare organizations.
-              </p>
-            </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Healthcare Labor Expertise</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Specialized knowledge in healthcare-specific labor regulations and requirements.
-              </p>
-            </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Proactive Compliance</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Stay ahead of regulatory changes with proactive monitoring and timely updates.
-              </p>
-            </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Respectful Labor Compliance</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Ensure dignified treatment of all employees while maintaining legal compliance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The MednLaw Approach */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">The MednLaw Approach</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">Our Labour Law Compliance Services</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {approachSteps.map(({ title, desc, icon }, i) => (
               <div
@@ -280,11 +270,11 @@ const LaborLawCompliance = () => {
         </div>
       </section>
 
-      {/* Types of Labor Law Compliances */}
-      <section className="py-20 px-4 bg-white">
+      {/* Key Legislations */}
+      <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
-            Types of Labor Law Compliances
+            Key Labour Law Compliances in India
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {laborLawTypes.map((law, i) => (
@@ -300,11 +290,10 @@ const LaborLawCompliance = () => {
         </div>
       </section>
 
-      {/* Safeguarding Section */}
+      {/* Safeguarding Those Who Care */}
       <section className="py-20 px-4 bg-[#17ada1] text-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Image */}
             <div className="h-96 flex items-center justify-center backdrop-blur-sm">
               <div className="text-center p-8">
                 <Image
@@ -317,22 +306,17 @@ const LaborLawCompliance = () => {
               </div>
             </div>
 
-            {/* Right Content */}
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-8">Safeguarding Those Who Care for Others</h2>
               <div className="space-y-5 text-sm leading-relaxed">
                 <p className="text-white/95">
-                  Healthcare providers dedicate their lives to caring for patients. They deserve workplaces that honor
-                  their commitment through fair treatment, safe conditions, and legal protection.
+                  Healthcare providers dedicate their lives to caring for patients. They deserve workplaces that honor their commitment through fair treatment, safe conditions, and legal protection.
                 </p>
                 <p className="text-white/95">
-                  MednLaw ensures that your practice complies with labor laws while fostering a positive work environment.
-                  We help you navigate complex regulations so you can focus on what matters most: delivering exceptional
-                  patient care.
+                  MednLaw ensures that your practice complies with labor laws while fostering a positive work environment. We help you navigate complex regulations so you can focus on what matters most: delivering exceptional patient care.
                 </p>
                 <p className="text-white/95">
-                  From preventing workplace discrimination to ensuring proper wage practices, we safeguard both your
-                  practice and your employees.
+                  From preventing workplace discrimination to ensuring proper wage practices, we safeguard both your practice and your employees.
                 </p>
               </div>
             </div>
@@ -377,12 +361,10 @@ const LaborLawCompliance = () => {
       <section className="py-20 px-4 bg-gradient-to-r from-[#17ada1] to-[#138f85] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            We are here for you: Every Step of Your Healthcare Compliance Journey
+            Ensure Compliance with Indian Labour Laws Today
           </h2>
           <p className="text-white/95 leading-relaxed text-base mb-10 max-w-3xl mx-auto">
-            Whether you need guidance on structuring healthcare compliance or updating your forms, MednLaw offers
-            exceptional legal support so you can focus on patient care. From HIPAA requirements to labor law compliance,
-            we're here to protect you.
+            With increasing regulatory scrutiny, maintaining proper labour law compliance is critical for business continuity. Professional labour law compliance services not only ensure adherence to legal requirements but also create a structured and efficient workplace environment.
           </p>
           <Link href="/contact">
             <button className="bg-white hover:bg-gray-100 text-[#17ada1] px-10 py-4 rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-xl inline-flex items-center">
