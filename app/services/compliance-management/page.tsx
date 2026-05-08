@@ -8,11 +8,29 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FAQSchema } from "@/app/components/SchemaGenerator";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Shield, CheckCircle, Users, FileText, TrendingUp, Award, AlertCircle, Building, Database, ClipboardList, Heart, Stethoscope, BookOpen } from "lucide-react";
 
 interface Partner {
   id: number;
   icon: string;
 }
+
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  responsive: [
+    { breakpoint: 1024, settings: { slidesToShow: 2 } },
+    { breakpoint: 640, settings: { slidesToShow: 1 } },
+  ],
+};
 
 const ComplianceManagementPage = () => {
   const partners: Partner[] = [
@@ -45,14 +63,35 @@ const ComplianceManagementPage = () => {
     window.open(whatsappUrl, "_blank");
   };
 
+  // Card Data for Slide 1 - Key Benefits of Compliance Management
+  const benefitsCards = [
+    { icon: Shield, title: "Reduced Legal & Regulatory Risks", desc: "Our compliance management solutions help identify and mitigate potential legal issues before they arise." },
+    { icon: CheckCircle, title: "Improved Patient Safety", desc: "Effective healthcare compliance management ensures adherence to clinical protocols and safety standards." },
+    { icon: TrendingUp, title: "Enhanced Operational Efficiency", desc: "Structured compliance systems streamline operations and reduce administrative burden." },
+    { icon: Award, title: "Increased Trust & Credibility", desc: "Proper compliance builds confidence among patients, partners, and regulatory bodies." },
+    { icon: Users, title: "Better Staff Management", desc: "Clear compliance protocols lead to improved workforce coordination and accountability." },
+    { icon: FileText, title: "Comprehensive Documentation", desc: "Systematic record-keeping ensures audit readiness and legal protection." },
+  ];
+
+  // Card Data for Slide 2 - Key Regulations Covered
+  const regulationsCards = [
+    { icon: Building, title: "Clinical Establishments Act", desc: "Registration and operational standards for hospitals, clinics, and diagnostic centers." },
+    { icon: AlertCircle, title: "Consumer Protection Act", desc: "Liability standards and patient rights protection in healthcare delivery." },
+    { icon: Database, title: "Patient Data Protection", desc: "Confidentiality and secure handling of medical records and patient information." },
+    { icon: ClipboardList, title: "Biomedical Waste Management", desc: "Proper treatment, handling, and disposal of biomedical waste." },
+    { icon: Shield, title: "Medical Council Guidelines", desc: "Professional conduct standards issued by NMC and state medical councils." },
+    { icon: Heart, title: "NABH Accreditation", desc: "Quality and safety standards for healthcare facilities and services." },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <Head>
-        <title>Healthcare Compliance Services in Delhi NCR | Legal Experts</title>
-        <meta name="description" content="Ensure full compliance for your hospital or clinic in Delhi NCR. Avoid legal risks with expert guidance. Book your consultation today." />
+        <title>Healthcare Compliance Management Services in India | Legal Experts</title>
+        <meta name="description" content="Expert healthcare compliance management services in India. Achieve full regulatory compliance for hospitals, clinics, and healthcare providers. Reduce legal risks today." />
       </Head>
 
       {faqs.length > 0 && <FAQSchema faqs={faqs} />}
+      
       {/* Hero Section */}
       <section
         className="relative w-full bg-cover bg-center overflow-hidden pt-28 pb-20 px-4"
@@ -63,56 +102,73 @@ const ComplianceManagementPage = () => {
           backgroundPosition: "center",
         }}
       >
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
         
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Compliance Management
-          </h1>
-          <p className="text-lg text-white mb-10 leading-relaxed">
-            Navigate complex healthcare regulations with confidence through comprehensive compliance management
-            solutions tailored to your practice.
-          </p>
-          <Link href="/contact">
-            <button className="bg-[#0f766e] hover:bg-[#0d9488] text-white px-10 py-4 rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5">
-              Get Started
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+          >
+            Healthcare Compliance Management Services in India
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="text-lg md:text-xl text-white/95 mb-10 leading-relaxed max-w-3xl mx-auto"
+          >
+            Expert guidance to navigate complex healthcare regulations and achieve full compliance
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Link href="/contact">
+              <button className="bg-[#17ada1] hover:bg-[#138f85] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+                Get Started
+              </button>
+            </Link>
+            <button
+              onClick={handleWhatsAppClick}
+              className="bg-transparent border-2 border-white hover:bg-white/10 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+            >
+              Schedule a Call
             </button>
-          </Link>
+          </motion.div>
         </div>
       </section>
 
-      {/* What is Compliance Management Section */}
+      {/* What is Healthcare Compliance Management */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Left Content */}
-            <div className="bg-[#17ada1] text-white p-10 md:p-12 rounded-xl shadow-xl">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                What is Compliance Management?
-              </h2>
-              <div className="space-y-4 leading-relaxed text-sm">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="bg-[#17ada1] text-white p-10 md:p-12 rounded-2xl shadow-xl">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">What is Healthcare Compliance Management?</h2>
+              <div className="space-y-4 leading-relaxed">
                 <p>
-                  Compliance in Indian healthcare requires adherence to regulations from the NMC, the Clinical Establishments Act, and state-specific laws covering quality, ethics, and waste disposal.
+                  Healthcare compliance management refers to the structured approach of ensuring that healthcare providers follow all applicable legal, regulatory, and ethical standards. This includes maintaining proper documentation, adhering to medical protocols, and implementing systems that support management system compliance.
                 </p>
                 <p>
-                  Providers must follow strict guidelines on patient data privacy and medical practices. Non-adherence risks severe penalties, including fines and loss of accreditation (NABH). 
+                  In India, healthcare compliance management is governed by multiple regulations, including the Clinical Establishments Act, Consumer Protection Act, Biomedical Waste Management Rules, and guidelines issued by medical councils.
                 </p>
                 <p>
-                  Effective compliance is ongoing, demanding audits and staff training. MedNLaw provides expertise to strategically manage this complex, evolving regulatory landscape, safeguarding practices against costly violations.
+                  Our compliance management solutions ensure that your organization remains aligned with these evolving legal requirements.
                 </p>
               </div>
             </div>
 
-            {/* Right Image */}
             <div className="relative">
-              <div className="overflow-hidden h-[450px] flex items-center justify-center">
+              <div className="overflow-hidden rounded-2xl shadow-xl">
                 <Image 
                   src="/assets/compliance-1st.jpg" 
                   alt="Compliance management" 
                   width={600} 
                   height={400}
-                  className="rounded-md w-full h-auto mb-10 object-cover" 
+                  className="rounded-2xl w-full h-auto object-cover" 
                 />
               </div>
             </div>
@@ -120,233 +176,249 @@ const ComplianceManagementPage = () => {
         </div>
       </section>
 
-      {/* Why MednLaw Section */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why MednLaw?</h2>
-          <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed mb-10 text-base">
-            MednLaw provides the most trusted partner in compliance management for healthcare providers. Our deep
-            understanding of healthcare regulations combined with practical compliance experience ensures your practice
-            meets all legal requirements without unnecessary burden. We don&apos;t just tell you what to do—we work alongside
-            you to implement sustainable compliance programs that protect your practice, your patients, and your
-            reputation. From HIPAA compliance to billing practices, we provide comprehensive solutions that keep you
-            compliant and focused on patient care.
-          </p>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" as const }}
-            className="flex-shrink-0 w-full md:w-auto"
-          >
-            <motion.button
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.96 }}
-              onClick={handleWhatsAppClick}
-              className="w-full md:w-auto group relative bg-gradient-to-r from-[#17ADA1] to-[#14968C] text-white px-8 md:px-12 py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#14968C] to-[#0d7c72] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <span className="relative">Schedule a call</span>
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Expert Guidance</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Specialized healthcare compliance expertise from professionals who understand medical regulations
-                and practical implementation.
-              </p>
-            </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Customized Solutions</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Tailored compliance programs designed for your specific practice type, size, and regulatory requirements.
-              </p>
-            </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Risk Mitigation</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Proactive identification and management of compliance risks before they become costly violations.
-              </p>
-            </div>
-            <div className="bg-white border-2 border-gray-200 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">End-To-End Support</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Comprehensive assistance from initial assessment through ongoing monitoring and audit support.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The MednLaw Approach */}
+      {/* Key Benefits - Cards Slider */}
       <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">The MednLaw Approach</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-5">
-                <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Evaluation</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Comprehensive assessment of your current compliance status, identifying gaps and areas of risk
-                across all regulatory domains.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-5">
-                <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Strategy</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Development of customized compliance strategies and action plans that address your specific needs
-                and priorities.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-5">
-                <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Research</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Ongoing monitoring of regulatory changes and best practices to keep your compliance program current
-                and effective.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-5">
-                <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Implementation</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Systematic rollout of policies, procedures, and training programs to embed compliance throughout
-                your organization.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-5">
-                <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Communication</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Clear communication of compliance requirements and expectations to all staff members and stakeholders.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-5">
-                <svg className="w-7 h-7 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Support</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Continuous guidance and assistance to maintain compliance, address issues, and adapt to new requirements.
-              </p>
-            </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Management System Compliance is Critical</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
+              Achieving management system compliance is essential for healthcare providers to operate efficiently and legally. Without structured compliance management services, institutions face increased risks of penalties, litigation, and reputational damage.
+            </p>
+          </motion.div>
+
+          <Slider {...sliderSettings} className="px-4">
+            {benefitsCards.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="px-3"
+              >
+                <div className="bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-auto">
+                  <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-5">
+                    <item.icon size={32} className="text-[#17ada1]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </Slider>
         </div>
       </section>
 
-      {/* Types of Compliance Management */}
+      {/* Our Compliance Management Solutions */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
-            Types of Compliance Management
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Regulatory Compliance</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Adherence to federal, state, and local healthcare regulations including CMS requirements, state
-                licensing laws, and federal privacy rules.
-              </p>
-            </div>
-            <div className="border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Licensing and Accreditation</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Maintenance of professional licenses, facility certifications, and accreditation standards from
-                bodies like Joint Commission and state boards.
-              </p>
-            </div>
-            <div className="border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Risk Management Compliance</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Implementation of policies and procedures to identify, assess, and mitigate operational and
-                clinical risks across your practice.
-              </p>
-            </div>
-            <div className="border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Patient Data Compliance</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Protection of patient information through HIPAA-compliant policies, security measures, and breach
-                response protocols.
-              </p>
-            </div>
-            <div className="border-2 border-gray-200 p-8 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Operational Compliance</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Day-to-day adherence to internal policies, quality standards, and operational protocols that support
-                regulatory requirements.
-              </p>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Compliance Management Solutions</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">At MednLaw, we offer end-to-end compliance management solutions tailored for the healthcare sector.</p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                <ClipboardList className="text-[#17ada1]" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Compliance Audits and Risk Assessment</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">We conduct detailed audits to evaluate your current level of management system compliance. Our compliance management solutions identify gaps and provide actionable recommendations.</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                <FileText className="text-[#17ada1]" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Policy Development and Documentation</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Proper documentation is a cornerstone of healthcare compliance management. Our services include drafting policies, SOPs, and compliance manuals aligned with Indian regulations.</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                <Building className="text-[#17ada1]" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Regulatory Compliance Implementation</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">We help healthcare institutions implement systems that ensure continuous management system compliance. Our compliance management solutions are designed for long-term sustainability.</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                <Users className="text-[#17ada1]" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Staff Training and Awareness</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Training is a key component of effective healthcare compliance management. Our services educate staff on legal requirements, ethical practices, and compliance protocols.</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                <TrendingUp className="text-[#17ada1]" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Ongoing Monitoring and Support</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Compliance is not a one-time process. Our compliance management solutions include continuous monitoring to ensure ongoing management system compliance.</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
+              <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                <Award className="text-[#17ada1]" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">NABH Accreditation Support</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">We assist healthcare facilities in achieving and maintaining NABH accreditation standards for quality and patient safety.</p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Your Compliance, Our Commitment Section */}
+      {/* Key Regulations Covered - Slider */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Laws Governing Healthcare Compliance in India</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">Effective healthcare compliance management requires a thorough understanding of Indian laws. Our compliance management services ensure adherence to:</p>
+          </motion.div>
+
+          <Slider {...sliderSettings} className="px-4">
+            {regulationsCards.map((item, index) => (
+              <div key={index} className="px-3">
+                <div className="bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-auto">
+                  <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-5">
+                    <item.icon size={28} className="text-[#17ada1]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </section>
+
+      {/* Who Needs Compliance Management Services */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who Needs Compliance Management Services?</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">Our compliance management services are ideal for:</p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
+              <Building className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
+              <h3 className="font-bold text-gray-900">Hospitals</h3>
+              <p className="text-gray-500 text-sm">Multi-specialty hospitals and healthcare centers</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
+              <Stethoscope className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
+              <h3 className="font-bold text-gray-900">Clinics</h3>
+              <p className="text-gray-500 text-sm">Individual practitioners and specialty clinics</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
+              <Database className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
+              <h3 className="font-bold text-gray-900">Diagnostic Labs</h3>
+              <p className="text-gray-500 text-sm">Imaging centers and pathology laboratories</p>
+            </motion.div>
+            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
+              <Heart className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
+              <h3 className="font-bold text-gray-900">Healthcare Startups</h3>
+              <p className="text-gray-500 text-sm">Telemedicine and digital health platforms</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Approach to Compliance Management */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Approach to Compliance Management</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">We follow a systematic and proactive approach to delivering effective compliance management solutions.</p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {[
+              { step: "Assessment", desc: "We evaluate your current systems to determine gaps in management system compliance." },
+              { step: "Strategy", desc: "Our experts design tailored compliance management services aligned with your operational needs." },
+              { step: "Implementation", desc: "We implement systems and processes to ensure effective healthcare compliance management." },
+              { step: "Monitoring", desc: "Continuous monitoring ensures sustained management system compliance." },
+              { step: "Improvement", desc: "We refine systems based on regulatory updates and operational feedback." }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -5 }}
+                className="text-center group"
+              >
+                <div className="w-20 h-20 bg-[#17ada1] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                  <span className="text-white text-2xl font-bold">{index + 1}</span>
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.step}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Your Compliance, Our Commitment */}
       <section className="py-20 px-4 bg-[#17ada1] text-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <Image 
-              src="/assets/goals.jpg" 
-              alt="Compliance commitment" 
-              width={500} 
-              height={400}
-              className="rounded-md w-full h-auto object-cover" 
-            />
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">Your Compliance, Our Commitment</h2>
-              <div className="space-y-5 text-sm leading-relaxed">
-                <p className="text-white/95">
-                  Healthcare compliance isn&apos;t just about avoiding penalties—it&apos;s about building a foundation of
-                  trust, quality, and operational excellence. Every regulation exists to protect patients, ensure
-                  quality care, and maintain the integrity of healthcare delivery.
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="overflow-hidden rounded-2xl shadow-xl">
+                <Image 
+                  src="/assets/goals.jpg" 
+                  alt="Compliance commitment" 
+                  width={500} 
+                  height={400}
+                  className="rounded-2xl w-full h-auto object-cover" 
+                />
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Your Compliance, Our Commitment</h2>
+              <div className="space-y-4 text-white/95">
+                <p>
+                  Healthcare compliance isn't just about avoiding penalties—it's about building a foundation of trust, quality, and operational excellence. Every regulation exists to protect patients, ensure quality care, and maintain the integrity of healthcare delivery.
                 </p>
-                <p className="text-white/95">
-                  MednLaw understands that compliance can feel overwhelming, especially for small and mid-sized
-                  practices without dedicated compliance staff. That&apos;s why we&apos;ve developed comprehensive, practical
-                  solutions that make compliance manageable and sustainable.
+                <p>
+                  MednLaw understands that compliance can feel overwhelming, especially for small and mid-sized practices without dedicated compliance staff. That's why we've developed comprehensive, practical solutions that make compliance manageable and sustainable.
                 </p>
-                <p className="text-white/95">
-                  We don&apos;t just hand you a binder of policies—we become your compliance partner, working alongside
-                  you to implement systems that work for your practice, train your staff, and maintain ongoing
-                  compliance. Your success in compliance is our commitment, and we&apos;re with you every step of the way.
+                <p>
+                  We don't just hand you a binder of policies—we become your compliance partner, working alongside you to implement systems that work for your practice, train your staff, and maintain ongoing compliance. Your success in compliance is our commitment, and we're with you every step of the way.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Trusted By */}
-      <div className="relative overflow-hidden mt-10">
+      <div className="relative overflow-hidden py-16 bg-white">
+        <h2 className="text-2xl font-bold text-center text-gray-700 mb-10">Trusted By Leading Healthcare Institutions</h2>
         <motion.div
           className="flex gap-12 md:gap-16 items-center"
           animate={{ x: ["0%", "-50%"] }}
@@ -379,22 +451,36 @@ const ComplianceManagementPage = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-[#17ada1] to-[#138f85] text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            We are here for you: Every Step of Your Healthcare Compliance Journey
-          </h2>
-          <p className="text-white/95 leading-relaxed text-base mb-10 max-w-3xl mx-auto">
-            Whether you need guidance on structuring healthcare compliance or maintaining regulatory standards,
-            MednLaw offers exceptional legal support so you can focus on patient care. From HIPAA requirements
-            to operational compliance, we&apos;re here to protect your practice and ensure peace of mind.
-          </p>
-          <Link href="/contact">
-            <button className="bg-white hover:bg-gray-100 text-[#17ada1] px-10 py-4 rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-xl inline-flex items-center">
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
-              Let&apos;s Connect
-            </button>
-          </Link>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-6"
+          >
+            Get Started with Healthcare Compliance Management Today
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-white/90 leading-relaxed text-base mb-10 max-w-3xl mx-auto"
+          >
+            Ensuring compliance is essential for sustainable healthcare operations. With expert-led compliance management solutions, you can safeguard your practice, reduce risks, and enhance operational efficiency.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <Link href="/contact">
+              <button className="bg-white hover:bg-gray-100 text-[#17ada1] px-12 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 inline-flex items-center gap-2">
+                <BookOpen size={20} />
+                Book a Consultation
+              </button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 

@@ -10,7 +10,7 @@ const ThoughtLeadershipSection = () => {
       name: "Dr. Rajesh Kumar",
       role: "Chief Medical Officer",
       hospital: "Apollo Hospitals",
-      text: "MedNLaw's expertise in healthcare compliance has been invaluable. Their proactive approach has saved us countless issues.",
+      text: "MednLaw's expertise in healthcare compliance and medical negligence defense has been invaluable. Their proactive approach has saved us from numerous legal complications and protected our reputation.",
       rating: 5,
     },
     {
@@ -18,7 +18,7 @@ const ThoughtLeadershipSection = () => {
       name: "Priya Sharma",
       role: "Hospital Administrator",
       hospital: "Fortis Healthcare",
-      text: "The strategic guidance we received transformed how we approach legal matters. Highly professional and responsive team.",
+      text: "The strategic guidance we received from MednLaw transformed how we approach legal matters in healthcare. From licensing renewals to compliance audits, their team is highly professional and responsive.",
       rating: 5,
     },
     {
@@ -26,7 +26,7 @@ const ThoughtLeadershipSection = () => {
       name: "Dr. Amit Patel",
       role: "Medical Director",
       hospital: "Max Healthcare",
-      text: "Outstanding service. They understand the healthcare sector deeply and provide tailored solutions for complex issues.",
+      text: "Outstanding service. They understand the healthcare sector deeply and provide tailored solutions for complex medico-legal issues. Their defense in our medical negligence case was exceptional.",
       rating: 5,
     },
     {
@@ -34,7 +34,7 @@ const ThoughtLeadershipSection = () => {
       name: "Neha Verma",
       role: "Legal Counsel",
       hospital: "Manipal Hospitals",
-      text: "Their thought leadership publications are must-reads for anyone in healthcare. Truly industry leaders.",
+      text: "Their understanding of PCPNDT Act compliance, clinical establishment registration, and healthcare regulations is unparalleled. Truly industry leaders in healthcare law.",
       rating: 5,
     },
     {
@@ -42,7 +42,7 @@ const ThoughtLeadershipSection = () => {
       name: "Dr. Vikram Singh",
       role: "Practice Manager",
       hospital: "Lilavati Hospital",
-      text: "Exceptional team that combines legal expertise with deep understanding of healthcare operations.",
+      text: "Exceptional team that combines legal expertise with deep understanding of healthcare operations. Their support with hospital licensing and renewals has been seamless.",
       rating: 5,
     },
   ];
@@ -50,7 +50,6 @@ const ThoughtLeadershipSection = () => {
   return (
     <section className="w-full bg-teal-50 flex justify-center items-center m-0 p-0 overflow-hidden">
       <div className="max-w-7xl w-full px-6 md:px-12 lg:px-16 py-20 relative">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,11 +64,10 @@ const ThoughtLeadershipSection = () => {
             Trusted by Healthcare Leaders
           </h2>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-            Hear what industry leaders have to say about our expertise and commitment.
+            Hear what industry leaders have to say about our expertise, commitment, and results-driven approach
           </p>
         </motion.div>
 
-        {/* Testimonials Carousel */}
         <div className="relative overflow-hidden">
           <motion.div
             className="flex gap-8 md:gap-12"

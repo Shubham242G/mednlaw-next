@@ -9,30 +9,30 @@ const ExpertiseSection = () => {
   const services = [
     {
       id: 1,
-      title: "Comprehensive Legal Services",
+      title: "Medical Negligence Legal Services",
       icon: "/assets/1st-layout.png",
       gradient: "from-[#17ADA1] to-[#14968C]",
       accentColor: "from-gray-500/20 to-transparent",
       description:
-        "From strategic planning for healthcare startups to healthcare risk management, we provide end-to-end medical compliance solutions. We always stay ahead of the dynamic healthcare regulations and navigate the legal intricacies with ease.",
+        "Expert legal defense for doctors, hospitals, and healthcare institutions facing medical negligence claims. Our experienced medical negligence attorneys provide strategic representation before consumer courts, civil courts, and higher judiciary.",
     },
     {
       id: 2,
-      title: "Reputation Management",
+      title: "Healthcare Compliance Management",
       icon: "/assets/2nd-layout.png",
       gradient: "from-[#17ADA1] to-[#14968C]",
       accentColor: "from-gray-500/20 to-transparent",
       description:
-        "We don't let legal disputes sabotage your reputation. With our reputation management specialists, you can mitigate legal risks, protect your healthcare brand and ensure your medical practice is regarded as reliable in the industry.",
+        "Comprehensive compliance management solutions for hospitals, clinics, and healthcare providers. We ensure adherence to Clinical Establishments Act, Biomedical Waste Management Rules, and all regulatory requirements.",
     },
     {
       id: 3,
-      title: "Strategic Compliance Consulting",
+      title: "Strategic Legal Advisory",
       icon: "/assets/3rd-layout.png",
       gradient: "from-[#17ADA1] to-[#14968C]",
       accentColor: "from-gray-500/20 to-transparent",
       description:
-        "Our healthcare startup advisory ensures your business isn't entangled in legal complexities. We prepare actionable insights, plans, and strategies to help you navigate the complex regulatory framework.",
+        "Our healthcare startup advisory and strategic consulting ensure your business navigates legal complexities with ease. We provide actionable insights, plans, and strategies to help you navigate India's complex healthcare regulatory framework.",
     },
   ];
 
@@ -54,7 +54,6 @@ const ExpertiseSection = () => {
     <div className="w-full bg-teal-50">
       {/* Section 1: CTA Section */}
       <section className="w-full min-h-[30vh] flex items-center justify-center px-6 md:px-12 lg:px-16 py-12 md:py-16 relative overflow-hidden">
-        {/* Grid overlay */}
         <div className="absolute inset-0 opacity-[0.02]">
           <svg className="w-full h-full" viewBox="0 0 1200 400">
             <defs>
@@ -68,7 +67,6 @@ const ExpertiseSection = () => {
 
         <div className="max-w-5xl mx-auto w-full relative z-10">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-12">
-            {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -93,11 +91,10 @@ const ExpertiseSection = () => {
                   maxHeight: '3.6em',
                 }}
               >
-                With over 5.2 million medical malpractice cases filed annually in India, proactive legal compliance is your only defense.
+                Medical negligence cases in India are rising rapidly. With over 5.2 million medical malpractice cases filed annually, proactive legal compliance is your only defense.
               </h2>
             </motion.div>
 
-            {/* Divider */}
             <motion.div
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
@@ -106,7 +103,6 @@ const ExpertiseSection = () => {
               className="hidden lg:block w-1 h-48 origin-top bg-gradient-to-b from-[#17ADA1] via-[#4ECDC4] to-transparent flex-shrink-0"
             ></motion.div>
 
-            {/* Right CTA */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -130,7 +126,6 @@ const ExpertiseSection = () => {
 
       {/* Services Section */}
       <section className="w-full py-20 md:py-32 relative overflow-hidden">
-        {/* Floating blurs */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             animate={{ y: [0, -20, 0] }}
@@ -145,7 +140,6 @@ const ExpertiseSection = () => {
         </div>
 
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -166,11 +160,10 @@ const ExpertiseSection = () => {
               Expert Solutions for Healthcare Excellence
             </h2>
             <p className="text-gray-700 text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
-              Comprehensive legal and strategic expertise tailored for modern healthcare providers
+              Comprehensive legal and strategic expertise tailored for modern healthcare providers across India
             </p>
           </motion.div>
 
-          {/* Cards */}
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
             {services.map((service, index) => (
               <motion.div
@@ -229,14 +222,6 @@ const ExpertiseSection = () => {
                     <p className="text-white/95 leading-relaxed text-base flex-grow mb-6">
                       {service.description}
                     </p>
-
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.2 + 0.4, duration: 0.6 }}
-                      className="flex items-center gap-2 text-white/80 text-sm font-medium group-hover:text-white transition-colors"
-                    ></motion.div>
                   </div>
                 </div>
               </motion.div>
@@ -286,7 +271,7 @@ const ExpertiseSection = () => {
               Trusted by Leading Healthcare Providers
             </h2>
             <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-              Partnering with industry leaders to deliver excellence
+              Partnering with industry leaders to deliver excellence in healthcare legal services
             </p>
           </motion.div>
 

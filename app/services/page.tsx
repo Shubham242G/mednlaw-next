@@ -21,7 +21,9 @@ const services: Service[] = [
   { name: "Licenses & Renewals", path: "/services/licenses-and-renewals" },
   { name: "Accounting Services", path: "/services/accounting-services" },
   { name: "Healthcare Startup Advisory", path: "/services/healthcare-startup-advisory" },
+  { name: " PCPNDT", path: "/services/pcpndt" },
 ];
+
 
 // Fix: Properly type the variants with correct easing
 const cardVariants: Variants = {
