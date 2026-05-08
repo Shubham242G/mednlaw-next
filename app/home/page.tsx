@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="bg-[#f5f1ed]">
       <Head>
-        <title>MednLaw - Healthcare Legal Experts in Delhi NCR</title>
+        <title>MedNLaw - Healthcare Legal Experts in Delhi NCR</title>
         <meta name="description" content="Expert legal services for healthcare providers in Delhi NCR. Medical negligence defense, compliance, licensing & more." />
         <meta name="google-site-verification" content="UX8PHtSwh0ghmi3cwchZeRG7nZklamcOmyG7wIvR5dw" />
       </Head>
