@@ -163,10 +163,6 @@ const ContactForm = () => {
               "SEND MESSAGE →"
             )}
           </motion.button>
-
-          <p className="text-gray-500 text-xs mt-6 text-center">
-            We respond within 24 hours. For urgent issues, call +91 98765 43210
-          </p>
         </form>
       </motion.div>
     </div>

@@ -23,14 +23,14 @@ const Footer = () => {
                 <strong>Gurgaon Office:</strong><br />
                 412, Emaar Colonnade, Golf Course Extension Road, Sector-66, Gurgaon
               </li>
-              <li>
+              {/* <li>
                 <strong>Noida Office:</strong><br />
                 208-209, Tower-E, Alphathum, Noida-201305
               </li>
               <li>
                 <strong>Indore Office:</strong><br />
                 205, B-Block, The One, RNT Marg, Near High Court, Indore-452001
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -61,7 +61,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 text-sm text-white/80 text-center md:text-left">
               <li> 
-                <a href="tel:8596505338" className="hover:text-[#17ada1]">8596505338</a>
+                <a href="tel:8596505338" className="hover:text-[#17ada1]">+91-8596505338</a>
               </li>
               <li>
                 <a href="mailto:info@mednlaw.com" className="hover:text-[#17ada1]">info@mednlaw.com</a>
