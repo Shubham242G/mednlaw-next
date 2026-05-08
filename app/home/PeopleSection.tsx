@@ -42,10 +42,6 @@ const PeopleSection = () => {
             Healthcare Law Specialists
           </h2>
 
-          <p className="text-gray-700 mb-6 text-lg font-medium">
-            We are here for you
-          </p>
-
           <p className="text-gray-800 leading-relaxed text-base md:text-[17px] border-t border-gray-300 pt-4">
             Whether you need guidance in navigating healthcare compliance, defending against medical negligence claims, or steering clear of legal complexities, our experienced medico-legal experts will provide end-to-end support, offering you the peace of mind you deserve.
           </p>
