@@ -285,42 +285,7 @@ const LaborLawCompliance = () => {
         </div>
       </section>
 
-      {/* Industries We Serve */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">Our labour law compliance services cater to a wide range of industries, each with unique compliance requirements.</p>
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
-              <Heart className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900">Healthcare</h3>
-              <p className="text-gray-500 text-sm">Hospitals, clinics, and diagnostic centers</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
-              <Building className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900">Manufacturing</h3>
-              <p className="text-gray-500 text-sm">Industrial units and production facilities</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
-              <Briefcase className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900">IT & Technology</h3>
-              <p className="text-gray-500 text-sm">Software companies and tech startups</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
-              <TrendingUp className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900">Startups & SMEs</h3>
-              <p className="text-gray-500 text-sm">Small and medium enterprises across sectors</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Our Approach to Labour Law Compliance */}
       <section className="py-20 px-4 bg-gray-50">

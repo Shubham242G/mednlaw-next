@@ -10,7 +10,7 @@ const ThoughtLeadershipSection = () => {
       name: "Dr. Rajesh Kumar",
       role: "Chief Medical Officer",
       hospital: "Apollo Hospitals",
-      text: "MednLaw's expertise in healthcare compliance and medical negligence defense has been invaluable. Their proactive approach has saved us from numerous legal complications and protected our reputation.",
+      text: "MedNLaw's expertise in healthcare compliance and medical negligence defense has been invaluable. Their proactive approach has saved us from numerous legal complications and protected our reputation.",
       rating: 5,
     },
     {
@@ -18,7 +18,7 @@ const ThoughtLeadershipSection = () => {
       name: "Priya Sharma",
       role: "Hospital Administrator",
       hospital: "Fortis Healthcare",
-      text: "The strategic guidance we received from MednLaw transformed how we approach legal matters in healthcare. From licensing renewals to compliance audits, their team is highly professional and responsive.",
+      text: "The strategic guidance we received from MedNLaw transformed how we approach legal matters in healthcare. From licensing renewals to compliance audits, their team is highly professional and responsive.",
       rating: 5,
     },
     {

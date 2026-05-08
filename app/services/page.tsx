@@ -12,7 +12,7 @@ interface Service {
 }
 
 const services: Service[] = [
-  { name: "Defence of Medical Negligence Claims", path: "/services/defence-of-medical-negligence-claims" },
+  { name: "Defences against Medical Negligence Claims", path: "/services/defence-of-medical-negligence-claims" },
   { name: "Labor Law Compliance", path: "/services/labor-law-compliance" },
   { name: "Due Diligence and Valuation", path: "/services/due-diligence-and-valuation" },
   { name: "Design and Construction of Healthcare Facilities", path: "/services/design-and-construction-of-healthcare-facilities" },
@@ -21,7 +21,7 @@ const services: Service[] = [
   { name: "Licenses & Renewals", path: "/services/licenses-and-renewals" },
   { name: "Accounting Services", path: "/services/accounting-services" },
   { name: "Healthcare Startup Advisory", path: "/services/healthcare-startup-advisory" },
-  { name: " PCPNDT", path: "/services/pcpndt" },
+  { name: "PCPNDT", path: "/services/pcpndt" },
 ];
 
 

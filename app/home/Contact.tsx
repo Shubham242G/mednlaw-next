@@ -88,7 +88,7 @@ const ContactForm = () => {
             transition={{ delay: 0.2 }}
             className="inline-block text-[#17ada1] text-xs font-bold tracking-[0.3em] uppercase mb-4"
           >
-            Contact mednlaw
+            Contact medNlaw
           </motion.span>
           <h2 
             className="text-[#17ada1] text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight"

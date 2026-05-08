@@ -17,6 +17,13 @@ import {
   Scale, BookOpen, MessageCircle, Eye, DollarSign, 
   Heart
 } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 interface Partner {
   id: number;
@@ -297,46 +304,118 @@ const DueDiligenceAndValuation = () => {
       </section>
 
       {/* Due Diligence Law in India - Key Regulations */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Due Diligence Law in India – Key Regulations</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">Due diligence law in India is influenced by multiple legal frameworks that our experts meticulously review.</p>
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <Building className="text-[#17ada1] w-10 h-10 mb-3" />
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Companies Act, 2013</h3>
-              <p className="text-gray-500 text-sm">Corporate governance, compliance, and statutory requirements for businesses.</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <Shield className="text-[#17ada1] w-10 h-10 mb-3" />
-              <h3 className="text-lg font-bold text-gray-900 mb-2">SEBI Regulations</h3>
-              <p className="text-gray-500 text-sm">Securities and Exchange Board of India rules for listed companies and investments.</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <Scale className="text-[#17ada1] w-10 h-10 mb-3" />
-              <h3 className="text-lg font-bold text-gray-900 mb-2">FEMA</h3>
-              <p className="text-gray-500 text-sm">Foreign Exchange Management Act for cross-border transactions and investments.</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <FileText className="text-[#17ada1] w-10 h-10 mb-3" />
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Income Tax Act</h3>
-              <p className="text-gray-500 text-sm">Tax compliance, liabilities, and historical tax assessment reviews.</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300">
-              <Heart className="text-[#17ada1] w-10 h-10 mb-3" />
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Clinical Establishments Act</h3>
-              <p className="text-gray-500 text-sm">Sector-specific regulations for healthcare facilities and medical practices.</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <section className="py-20 px-4 bg-white overflow-hidden">
+  <div className="max-w-7xl mx-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-12"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Due Diligence Law in India – Key Regulations
+      </h2>
+      <p className="text-gray-600 max-w-3xl mx-auto">
+        Due diligence law in India is influenced by multiple legal frameworks that our experts meticulously review.
+      </p>
+    </motion.div>
+
+    <Swiper
+      modules={[Navigation, Pagination, Autoplay]}
+      spaceBetween={24}
+      slidesPerView={1}
+      navigation
+      pagination={{ clickable: true }}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      breakpoints={{
+        // When window width is >= 640px
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        // When window width is >= 768px
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        // When window width is >= 1024px
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+        },
+        // When window width is >= 1280px
+        1280: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+      }}
+      className="due-diligence-slider"
+    >
+      {/* Slide 1 - Companies Act */}
+      <SwiperSlide>
+        <motion.div 
+          whileHover={{ y: -5 }} 
+          className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
+        >
+          <Building className="text-[#17ada1] w-10 h-10 mb-3" />
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Companies Act, 2013</h3>
+          <p className="text-gray-500 text-sm">Corporate governance, compliance, and statutory requirements for businesses.</p>
+        </motion.div>
+      </SwiperSlide>
+
+      {/* Slide 2 - SEBI Regulations */}
+      <SwiperSlide>
+        <motion.div 
+          whileHover={{ y: -5 }} 
+          className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
+        >
+          <Shield className="text-[#17ada1] w-10 h-10 mb-3" />
+          <h3 className="text-lg font-bold text-gray-900 mb-2">SEBI Regulations</h3>
+          <p className="text-gray-500 text-sm">Securities and Exchange Board of India rules for listed companies and investments.</p>
+        </motion.div>
+      </SwiperSlide>
+
+      {/* Slide 3 - FEMA */}
+      <SwiperSlide>
+        <motion.div 
+          whileHover={{ y: -5 }} 
+          className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
+        >
+          <Scale className="text-[#17ada1] w-10 h-10 mb-3" />
+          <h3 className="text-lg font-bold text-gray-900 mb-2">FEMA</h3>
+          <p className="text-gray-500 text-sm">Foreign Exchange Management Act for cross-border transactions and investments.</p>
+        </motion.div>
+      </SwiperSlide>
+
+      {/* Slide 4 - Income Tax Act */}
+      <SwiperSlide>
+        <motion.div 
+          whileHover={{ y: -5 }} 
+          className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
+        >
+          <FileText className="text-[#17ada1] w-10 h-10 mb-3" />
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Income Tax Act</h3>
+          <p className="text-gray-500 text-sm">Tax compliance, liabilities, and historical tax assessment reviews.</p>
+        </motion.div>
+      </SwiperSlide>
+
+      {/* Slide 5 - Clinical Establishments Act */}
+      <SwiperSlide>
+        <motion.div 
+          whileHover={{ y: -5 }} 
+          className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
+        >
+          <Heart className="text-[#17ada1] w-10 h-10 mb-3" />
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Clinical Establishments Act</h3>
+          <p className="text-gray-500 text-sm">Sector-specific regulations for healthcare facilities and medical practices.</p>
+        </motion.div>
+      </SwiperSlide>
+    </Swiper>
+  </div>
+</section>
 
       {/* Our Due Diligence Process */}
       <section className="py-20 px-4 bg-gray-50">
@@ -460,7 +539,7 @@ const DueDiligenceAndValuation = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">When Do You Need Due Diligence Services?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">When Do You Need Due Diligence Services in Healthcare?</h2>
             <p className="text-gray-600 max-w-3xl mx-auto">You should consider professional due diligence services in the following scenarios:</p>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
