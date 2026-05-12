@@ -103,11 +103,12 @@ const AccountingServicesPage = () => {
       <Head>
         <title>Healthcare Accounting Services in India | GST & Tax Experts</title>
         <meta name="description" content="Expert healthcare accounting services in India. Tax filing for doctors, GST filing for hospitals & accounting for diagnostic centers. Compliant financial solutions." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       {faqs.length > 0 && <FAQSchema faqs={faqs} />}
       
-      {/* Hero Section */}
+      {/* Hero Section - Mobile Optimized */}
       <section
         id="accounting-services"
         className="relative w-full min-h-[60vh] bg-cover bg-center flex items-center"
@@ -117,12 +118,12 @@ const AccountingServicesPage = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12 py-24">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-24">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl leading-tight"
+            className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold max-w-3xl leading-tight"
           >
             Healthcare Accounting Services in India
           </motion.h1>
@@ -131,7 +132,7 @@ const AccountingServicesPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="text-white/90 mt-4 max-w-2xl text-lg md:text-xl"
+            className="text-white/90 mt-3 sm:mt-4 max-w-2xl text-base sm:text-lg md:text-xl"
           >
             Expert tax filing for doctors, GST filing for hospitals & specialized accounting for diagnostic centers
           </motion.p>
@@ -140,16 +141,16 @@ const AccountingServicesPage = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 mt-8"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8"
           >
-            <Link href="/contact">
-              <button className="bg-[#17ada1] hover:bg-[#138f85] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+            <Link href="/contact" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto bg-[#17ada1] hover:bg-[#138f85] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
                 Get Started Today
               </button>
             </Link>
             <button
               onClick={handleWhatsAppClick}
-              className="bg-transparent border-2 border-white hover:bg-white/10 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+              className="w-full sm:w-auto bg-transparent border-2 border-white hover:bg-white/10 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300"
             >
               Schedule a Call
             </button>
@@ -157,13 +158,13 @@ const AccountingServicesPage = () => {
         </div>
       </section>
 
-      {/* What is Healthcare Accounting Services */}
-      <section className="py-20 px-4 bg-white">
+      {/* What is Healthcare Accounting Services - Mobile Friendly */}
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-[#17ada1] text-white p-10 md:p-12 rounded-2xl shadow-xl">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">What is Healthcare Accounting Services?</h2>
-              <div className="space-y-4 leading-relaxed">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="bg-[#17ada1] text-white p-6 sm:p-8 md:p-10 lg:p-12 rounded-2xl shadow-xl order-2 md:order-1">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">What is Healthcare Accounting Services?</h2>
+              <div className="space-y-3 sm:space-y-4 leading-relaxed text-sm sm:text-base">
                 <p>
                   Accounting Services for healthcare providers encompass specialized financial management tailored to the complex regulatory and operational requirements of medical practices. This includes bookkeeping, financial reporting, tax compliance, payroll management, and strategic financial planning.
                 </p>
@@ -175,7 +176,7 @@ const AccountingServicesPage = () => {
                 </p>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative order-1 md:order-2">
               <div className="overflow-hidden rounded-2xl shadow-xl">
                 <Image 
                   src="/assets/accounting-1st.jpg" 
@@ -191,21 +192,21 @@ const AccountingServicesPage = () => {
       </section>
 
       {/* Key Benefits - Cards Slider */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Professional Healthcare Accounting Matters</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Why Professional Healthcare Accounting Matters</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-sm sm:text-base px-4">
               Generic accounting services often fail to address the unique needs of the healthcare sector. Professional healthcare accounting services help maintain accurate financial records, ensure compliance with Indian tax laws, streamline billing and revenue cycles, and reduce financial risks and penalties.
             </p>
           </motion.div>
 
-          <Slider {...sliderSettings} className="px-4">
+          <Slider {...sliderSettings} className="px-2 sm:px-4">
             {benefitsCards.map((item, index) => (
               <motion.div
                 key={index}
@@ -213,14 +214,14 @@ const AccountingServicesPage = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="px-3"
+                className="px-2 sm:px-3"
               >
-                <div className="bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-auto">
-                  <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-5">
-                    <item.icon size={32} className="text-[#17ada1]" />
+                <div className="bg-white border-2 border-gray-100 rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-auto">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-3 sm:mb-5">
+                    <item.icon size={24} className="text-[#17ada1] sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -229,29 +230,29 @@ const AccountingServicesPage = () => {
       </section>
 
       {/* Our Comprehensive Accounting Services */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Comprehensive Healthcare Accounting Services</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">We offer a full range of accounting services designed specifically for healthcare providers across India.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Our Comprehensive Healthcare Accounting Services</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-sm sm:text-base px-4">We offer a full range of accounting services designed specifically for healthcare providers across India.</p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {ourServicesCards.map((item, index) => (
               <motion.div
                 key={index}
                 whileHover={{ y: -5 }}
-                className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300"
+                className="bg-white border-2 border-gray-100 p-4 sm:p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
-                  <item.icon className="text-[#17ada1]" size={28} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-3 sm:mb-4">
+                  <item.icon className="text-[#17ada1] w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -259,27 +260,27 @@ const AccountingServicesPage = () => {
       </section>
 
       {/* Types of Accounting Services - Cards Slider */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Types of Accounting Services We Offer</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">Our services cover all aspects of healthcare financial management, from basic bookkeeping to strategic planning.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Types of Accounting Services We Offer</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-sm sm:text-base px-4">Our services cover all aspects of healthcare financial management, from basic bookkeeping to strategic planning.</p>
           </motion.div>
 
-          <Slider {...sliderSettings} className="px-4">
+          <Slider {...sliderSettings} className="px-2 sm:px-4">
             {serviceTypesCards.map((item, index) => (
-              <div key={index} className="px-3">
-                <div className="bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-auto">
-                  <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-5">
-                    <item.icon size={28} className="text-[#17ada1]" />
+              <div key={index} className="px-2 sm:px-3">
+                <div className="bg-white border-2 border-gray-100 rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-auto">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-3 sm:mb-5">
+                    <item.icon size={20} className="text-[#17ada1] sm:w-6 sm:h-6 md:w-7 md:h-7" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -288,16 +289,17 @@ const AccountingServicesPage = () => {
       </section>
 
       {/* Tax Filing for Doctors - Detailed Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="order-2 md:order-1"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Understanding Tax Filing for Doctors in India</h2>
-              <div className="space-y-4 text-gray-600">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Understanding Tax Filing for Doctors in India</h2>
+              <div className="space-y-3 sm:space-y-4 text-gray-600 text-sm sm:text-base">
                 <p>
                   Doctors in India must comply with the Income Tax Act, including reporting income from consultations, surgeries, and other services. Our tax filing for doctors services ensure accurate income classification, claiming eligible deductions, timely filing of returns, and compliance with audit requirements.
                 </p>
@@ -305,12 +307,12 @@ const AccountingServicesPage = () => {
                   Professional healthcare accounting services help doctors avoid penalties and optimize tax liabilities. We help you identify eligible deductions under Section 80C, 80D, and other provisions specific to medical professionals.
                 </p>
                 <div className="bg-gray-50 p-4 rounded-lg mt-4">
-                  <h3 className="font-bold text-gray-800 mb-2">Key Tax Benefits for Doctors:</h3>
+                  <h3 className="font-bold text-gray-800 mb-2 text-sm sm:text-base">Key Tax Benefits for Doctors:</h3>
                   <ul className="space-y-2">
-                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-4 h-4 mt-1" /><span className="text-sm">Deduction for professional library expenses</span></li>
-                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-4 h-4 mt-1" /><span className="text-sm">Depreciation on medical equipment</span></li>
-                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-4 h-4 mt-1" /><span className="text-sm">Rent and staff salary deductions</span></li>
-                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-4 h-4 mt-1" /><span className="text-sm">Presumptive taxation scheme (Section 44ADA)</span></li>
+                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1" /><span className="text-xs sm:text-sm">Deduction for professional library expenses</span></li>
+                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1" /><span className="text-xs sm:text-sm">Depreciation on medical equipment</span></li>
+                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1" /><span className="text-xs sm:text-sm">Rent and staff salary deductions</span></li>
+                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1" /><span className="text-xs sm:text-sm">Presumptive taxation scheme (Section 44ADA)</span></li>
                   </ul>
                 </div>
               </div>
@@ -319,23 +321,23 @@ const AccountingServicesPage = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-gray-50 p-8 rounded-2xl shadow-lg"
+              className="bg-gray-50 p-5 sm:p-6 md:p-8 rounded-2xl shadow-lg order-1 md:order-2"
             >
               <div className="flex items-center gap-3 mb-4">
-                <Building className="text-[#17ada1]" size={32} />
-                <h3 className="text-xl font-bold text-gray-900">GST Filing for Hospitals – What You Need to Know</h3>
+                <Building className="text-[#17ada1]" size={24} />
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900">GST Filing for Hospitals – What You Need to Know</h3>
               </div>
               <div className="space-y-3">
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 text-xs sm:text-sm">
                   While many healthcare services are GST-exempt, certain services and products are taxable. Our GST filing for hospitals includes:
                 </p>
                 <ul className="space-y-2">
-                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-4 h-4 mt-0.5" /><span className="text-sm">Identifying taxable vs exempt services</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-4 h-4 mt-0.5" /><span className="text-sm">Filing monthly and annual GST returns</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-4 h-4 mt-0.5" /><span className="text-sm">Maintaining proper documentation</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-4 h-4 mt-0.5" /><span className="text-sm">Ensuring compliance with GST regulations</span></li>
+                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5" /><span className="text-xs sm:text-sm">Identifying taxable vs exempt services</span></li>
+                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5" /><span className="text-xs sm:text-sm">Filing monthly and annual GST returns</span></li>
+                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5" /><span className="text-xs sm:text-sm">Maintaining proper documentation</span></li>
+                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5" /><span className="text-xs sm:text-sm">Ensuring compliance with GST regulations</span></li>
                 </ul>
-                <p className="text-gray-600 text-sm mt-3">
+                <p className="text-gray-600 text-xs sm:text-sm mt-3">
                   Expert accountants for healthcare ensure that your hospital remains fully compliant with GST laws while optimizing tax liability.
                 </p>
               </div>
@@ -345,72 +347,64 @@ const AccountingServicesPage = () => {
       </section>
 
       {/* Who Needs Healthcare Accounting Services */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who Needs Healthcare Accounting Services?</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">Our healthcare accounting services are ideal for healthcare providers of all sizes, from individual practitioners to large hospital systems.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Who Needs Healthcare Accounting Services?</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-sm sm:text-base px-4">Our healthcare accounting services are ideal for healthcare providers of all sizes, from individual practitioners to large hospital systems.</p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <motion.div whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
-              <Users className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900">Individual Doctors</h3>
-              <p className="text-gray-500 text-sm">Private practitioners and consultants</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
-              <Building className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900">Multi-Specialty Hospitals</h3>
-              <p className="text-gray-500 text-sm">Large healthcare institutions and hospital chains</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
-              <Heart className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900">Clinics & Nursing Homes</h3>
-              <p className="text-gray-500 text-sm">Small and medium-sized healthcare facilities</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
-              <Calculator className="text-[#17ada1] w-12 h-12 mx-auto mb-3" />
-              <h3 className="font-bold text-gray-900">Diagnostic & Pathology Labs</h3>
-              <p className="text-gray-500 text-sm">Diagnostic centers and imaging facilities</p>
-            </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {[
+              { icon: Users, title: "Individual Doctors", desc: "Private practitioners and consultants" },
+              { icon: Building, title: "Multi-Specialty Hospitals", desc: "Large healthcare institutions and hospital chains" },
+              { icon: Heart, title: "Clinics & Nursing Homes", desc: "Small and medium-sized healthcare facilities" },
+              { icon: Calculator, title: "Diagnostic & Pathology Labs", desc: "Diagnostic centers and imaging facilities" }
+            ].map((item, index) => (
+              <motion.div key={index} whileHover={{ y: -5 }} className="bg-white border-2 border-gray-100 p-4 sm:p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 text-center">
+                <item.icon className="text-[#17ada1] w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3" />
+                <h3 className="font-bold text-gray-900 text-sm sm:text-base mb-1">{item.title}</h3>
+                <p className="text-gray-500 text-xs sm:text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Our Process */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Accounting Process – Structured & Transparent</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">We follow a systematic approach to deliver reliable and accurate accounting services for healthcare providers.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Our Accounting Process – Structured & Transparent</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-sm sm:text-base px-4">We follow a systematic approach to deliver reliable and accurate accounting services for healthcare providers.</p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {[
               { step: "Assessment", desc: "Evaluate your current financial systems and compliance status" },
               { step: "Planning", desc: "Develop a customized financial management strategy" },
               { step: "Implementation", desc: "Manage bookkeeping, tax filing, and GST compliance" },
               { step: "Monitoring", desc: "Continuous monitoring ensures accuracy and compliance" },
-              { step: "Reporting", desc: "Provide detailed financial reports for better decision-making" }
+              { step: "Reporting", desc: "Provide detailed financial reports" }
             ].map((item, index) => (
               <motion.div
                 key={index}
                 whileHover={{ y: -5 }}
                 className="text-center group"
               >
-                <div className="w-20 h-20 bg-[#17ada1] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-white text-2xl font-bold">{index + 1}</span>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#17ada1] rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                  <span className="text-white text-xl sm:text-2xl font-bold">{index + 1}</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.step}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">{item.step}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed px-2">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -418,13 +412,14 @@ const AccountingServicesPage = () => {
       </section>
 
       {/* Where Healthcare Meets Finance */}
-      <section className="py-20 px-4 bg-[#17ada1] text-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#17ada1] text-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="order-2 md:order-1"
             >
               <div className="overflow-hidden rounded-2xl shadow-xl">
                 <Image 
@@ -440,9 +435,10 @@ const AccountingServicesPage = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="order-1 md:order-2"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Where Healthcare Meets Finance</h2>
-              <div className="space-y-4 text-white/95">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Where Healthcare Meets Finance</h2>
+              <div className="space-y-3 sm:space-y-4 text-white/95 text-sm sm:text-base">
                 <p>
                   Financial management in healthcare is uniquely complex, requiring expertise in both accounting principles and healthcare operations. From insurance reimbursement tracking to regulatory compliance, medical practices face financial challenges that demand specialized knowledge.
                 </p>
@@ -459,13 +455,13 @@ const AccountingServicesPage = () => {
       </section>
 
       {/* Why Choose MednLaw */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6"
           >
             Why Choose MednLaw for Healthcare Accounting Services
           </motion.h2>
@@ -474,7 +470,7 @@ const AccountingServicesPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-gray-600 max-w-4xl mx-auto leading-relaxed mb-10 text-base"
+            className="text-gray-600 max-w-4xl mx-auto leading-relaxed mb-6 sm:mb-10 text-sm sm:text-base px-4"
           >
             MednLaw brings specialized expertise in healthcare accounting, combining financial acumen with deep understanding of medical practice operations and regulatory requirements. We understand the unique challenges healthcare providers face—from complex insurance reimbursements to healthcare-specific tax considerations. Our team provides accurate, timely financial services while offering strategic guidance that helps you optimize revenue, control costs, and make informed business decisions. We don't just manage your books—we become a trusted financial partner invested in your practice's success and growth.
           </motion.p>
@@ -486,7 +482,7 @@ const AccountingServicesPage = () => {
           >
             <button
               onClick={handleWhatsAppClick}
-              className="bg-[#17ada1] hover:bg-[#138f85] text-white px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl cursor-pointer"
+              className="bg-[#17ada1] hover:bg-[#138f85] text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl cursor-pointer w-full sm:w-auto"
             >
               Get Expert Accounting Support
             </button>
@@ -494,11 +490,11 @@ const AccountingServicesPage = () => {
         </div>
       </section>
 
-      {/* Trusted By */}
-      <div className="relative overflow-hidden py-16 bg-gray-50">
-        <h2 className="text-2xl font-bold text-center text-gray-700 mb-10">Trusted By Leading Healthcare Institutions</h2>
+      {/* Trusted By - Mobile Optimized */}
+      <div className="relative overflow-hidden py-12 sm:py-16 bg-gray-50">
+        <h2 className="text-xl sm:text-2xl font-bold text-center text-gray-700 mb-6 sm:mb-10 px-4">Trusted By Leading Healthcare Institutions</h2>
         <motion.div
-          className="flex gap-12 md:gap-16 items-center"
+          className="flex gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-center"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
             duration: 25,
@@ -510,15 +506,15 @@ const AccountingServicesPage = () => {
             <motion.div
               key={index}
               whileHover={{ scale: 1.1 }}
-              className="flex-shrink-0 w-60 h-40 flex items-center justify-center group"
+              className="flex-shrink-0 w-40 sm:w-48 md:w-60 h-24 sm:h-32 md:h-40 flex items-center justify-center group"
             >
-              <div className="relative w-full h-full flex items-center justify-center bg-white rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300 border border-gray-100 group-hover:border-[#17ADA1]/30">
+              <div className="relative w-full h-full flex items-center justify-center bg-white rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300 border border-gray-100 group-hover:border-[#17ADA1]/30 p-4">
                 <Image
                   src={partner.icon}
                   alt={`Partner ${partner.id}`}
-                  width={200}
-                  height={96}
-                  className="max-h-24 max-w-48 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                  width={160}
+                  height={80}
+                  className="max-h-16 sm:max-h-20 md:max-h-24 max-w-32 sm:max-w-40 md:max-w-48 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             </motion.div>
@@ -527,13 +523,13 @@ const AccountingServicesPage = () => {
       </div>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-[#17ada1] to-[#138f85] text-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-r from-[#17ada1] to-[#138f85] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6"
           >
             Get Expert Healthcare Accounting Services Today
           </motion.h2>
@@ -542,7 +538,7 @@ const AccountingServicesPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-white/90 leading-relaxed text-base mb-10 max-w-3xl mx-auto"
+            className="text-white/90 leading-relaxed text-sm sm:text-base mb-6 sm:mb-10 max-w-3xl mx-auto px-4"
           >
             Whether you need tax filing for doctors, GST filing for hospitals, or specialized accounting for diagnostic centers, MednLaw provides reliable and professional support. Partner with expert accountants for healthcare and ensure that your financial systems are efficient, compliant, and future-ready.
           </motion.p>
@@ -552,9 +548,9 @@ const AccountingServicesPage = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Link href="/contact">
-              <button className="bg-white hover:bg-gray-100 text-[#17ada1] px-12 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 inline-flex items-center gap-2">
-                <MessageCircle size={20} />
+            <Link href="/contact" className="block sm:inline-block">
+              <button className="w-full sm:w-auto bg-white hover:bg-gray-100 text-[#17ada1] px-6 sm:px-8 md:px-12 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 inline-flex items-center justify-center gap-2">
+                <MessageCircle size={18} />
                 Let's Connect
               </button>
             </Link>
@@ -563,7 +559,6 @@ const AccountingServicesPage = () => {
       </section>
 
       <WebsiteFAQ pageUrl="/services/accounting-services" />
-
     </div>
   );
 };
