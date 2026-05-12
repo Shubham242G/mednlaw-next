@@ -32,8 +32,22 @@ const sliderSettings = {
   autoplay: true,
   autoplaySpeed: 4000,
   responsive: [
-    { breakpoint: 1024, settings: { slidesToShow: 2 } },
-    { breakpoint: 640, settings: { slidesToShow: 1 } },
+    {
+      breakpoint: 1024, // Tablets
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 640, // Mobile phones
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: "20px",
+      }
+    }
   ],
 };
 
@@ -289,62 +303,88 @@ const AccountingServicesPage = () => {
       </section>
 
       {/* Tax Filing for Doctors - Detailed Section */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="order-2 md:order-1"
-            >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Understanding Tax Filing for Doctors in India</h2>
-              <div className="space-y-3 sm:space-y-4 text-gray-600 text-sm sm:text-base">
-                <p>
-                  Doctors in India must comply with the Income Tax Act, including reporting income from consultations, surgeries, and other services. Our tax filing for doctors services ensure accurate income classification, claiming eligible deductions, timely filing of returns, and compliance with audit requirements.
-                </p>
-                <p>
-                  Professional healthcare accounting services help doctors avoid penalties and optimize tax liabilities. We help you identify eligible deductions under Section 80C, 80D, and other provisions specific to medical professionals.
-                </p>
-                <div className="bg-gray-50 p-4 rounded-lg mt-4">
-                  <h3 className="font-bold text-gray-800 mb-2 text-sm sm:text-base">Key Tax Benefits for Doctors:</h3>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1" /><span className="text-xs sm:text-sm">Deduction for professional library expenses</span></li>
-                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1" /><span className="text-xs sm:text-sm">Depreciation on medical equipment</span></li>
-                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1" /><span className="text-xs sm:text-sm">Rent and staff salary deductions</span></li>
-                    <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1" /><span className="text-xs sm:text-sm">Presumptive taxation scheme (Section 44ADA)</span></li>
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-gray-50 p-5 sm:p-6 md:p-8 rounded-2xl shadow-lg order-1 md:order-2"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <Building className="text-[#17ada1]" size={24} />
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900">GST Filing for Hospitals – What You Need to Know</h3>
-              </div>
-              <div className="space-y-3">
-                <p className="text-gray-600 text-xs sm:text-sm">
-                  While many healthcare services are GST-exempt, certain services and products are taxable. Our GST filing for hospitals includes:
-                </p>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5" /><span className="text-xs sm:text-sm">Identifying taxable vs exempt services</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5" /><span className="text-xs sm:text-sm">Filing monthly and annual GST returns</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5" /><span className="text-xs sm:text-sm">Maintaining proper documentation</span></li>
-                  <li className="flex items-start gap-2"><CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5" /><span className="text-xs sm:text-sm">Ensuring compliance with GST regulations</span></li>
-                </ul>
-                <p className="text-gray-600 text-xs sm:text-sm mt-3">
-                  Expert accountants for healthcare ensure that your hospital remains fully compliant with GST laws while optimizing tax liability.
-                </p>
-              </div>
-            </motion.div>
+<section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="order-2 md:order-1"
+      >
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+          Understanding Tax Filing for Doctors in India
+        </h2>
+        <div className="space-y-3 sm:space-y-4 text-gray-700 text-sm sm:text-base">
+          <p className="text-gray-700">
+            Doctors in India must comply with the Income Tax Act, including reporting income from consultations, surgeries, and other services. Our tax filing for doctors services ensure accurate income classification, claiming eligible deductions, timely filing of returns, and compliance with audit requirements.
+          </p>
+          <p className="text-gray-700">
+            Professional healthcare accounting services help doctors avoid penalties and optimize tax liabilities. We help you identify eligible deductions under Section 80C, 80D, and other provisions specific to medical professionals.
+          </p>
+          <div className="bg-gray-50 p-4 rounded-lg mt-4">
+            <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base">Key Tax Benefits for Doctors:</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1 flex-shrink-0" />
+                <span className="text-gray-700 text-xs sm:text-sm">Deduction for professional library expenses</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1 flex-shrink-0" />
+                <span className="text-gray-700 text-xs sm:text-sm">Depreciation on medical equipment</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1 flex-shrink-0" />
+                <span className="text-gray-700 text-xs sm:text-sm">Rent and staff salary deductions</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-1 flex-shrink-0" />
+                <span className="text-gray-700 text-xs sm:text-sm">Presumptive taxation scheme (Section 44ADA)</span>
+              </li>
+            </ul>
           </div>
         </div>
-      </section>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="bg-gray-50 p-5 sm:p-6 md:p-8 rounded-2xl shadow-lg order-1 md:order-2"
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <Building className="text-[#17ada1]" size={24} />
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900">GST Filing for Hospitals – What You Need to Know</h3>
+        </div>
+        <div className="space-y-3">
+          <p className="text-gray-700 text-xs sm:text-sm">
+            While many healthcare services are GST-exempt, certain services and products are taxable. Our GST filing for hospitals includes:
+          </p>
+          <ul className="space-y-2">
+            <li className="flex items-start gap-2">
+              <CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5 flex-shrink-0" />
+              <span className="text-gray-700 text-xs sm:text-sm">Identifying taxable vs exempt services</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5 flex-shrink-0" />
+              <span className="text-gray-700 text-xs sm:text-sm">Filing monthly and annual GST returns</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5 flex-shrink-0" />
+              <span className="text-gray-700 text-xs sm:text-sm">Maintaining proper documentation</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle className="text-[#17ada1] w-3 h-3 sm:w-4 sm:h-4 mt-0.5 flex-shrink-0" />
+              <span className="text-gray-700 text-xs sm:text-sm">Ensuring compliance with GST regulations</span>
+            </li>
+          </ul>
+          <p className="text-gray-700 text-xs sm:text-sm mt-3">
+            Expert accountants for healthcare ensure that your hospital remains fully compliant with GST laws while optimizing tax liability.
+          </p>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
       {/* Who Needs Healthcare Accounting Services */}
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
