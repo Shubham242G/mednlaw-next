@@ -40,7 +40,7 @@ export default function WebsiteFAQ({ pageUrl }: WebsiteFAQProps) {
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4 max-w-4xl">
-        <h2 className="text-3xl font-bold text-center mb-12">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
           Frequently Asked Questions
         </h2>
         
@@ -51,7 +51,7 @@ export default function WebsiteFAQ({ pageUrl }: WebsiteFAQProps) {
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full text-left p-6 flex justify-between items-center hover:bg-gray-50 transition"
               >
-                <span className="font-semibold text-lg">{faq.question}</span>
+                <span className="font-semibold text-lg text-gray-900">{faq.question}</span>
                 <span className="text-2xl text-[#c48e53]">
                   {openIndex === index ? '−' : '+'}
                 </span>
@@ -60,7 +60,7 @@ export default function WebsiteFAQ({ pageUrl }: WebsiteFAQProps) {
               {openIndex === index && (
                 <div className="p-6 pt-0 border-t">
                   <div 
-                    className="text-gray-600 leading-relaxed"
+                    className="text-gray-700 leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: faq.answer }}
                   />
                 </div>
