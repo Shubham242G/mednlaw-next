@@ -247,7 +247,7 @@ const AboutUs = () => {
         </div>
 
         {/* Founder */}
-        <div className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col lg:flex-row items-center lg:gap-16 gap-10 mb-20 mt-20">
+        <div id="founder" className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col lg:flex-row items-center lg:gap-16 gap-10 mb-20 mt-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}

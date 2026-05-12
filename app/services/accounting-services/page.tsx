@@ -186,7 +186,7 @@ const AccountingServicesPage = () => {
                   Healthcare accounting differs significantly from general business accounting due to unique revenue cycles, insurance reimbursement complexities, regulatory compliance requirements, and specific tax considerations. Proper financial management is critical for practice sustainability and growth.
                 </p>
                 <p>
-                  MednLaw provides comprehensive accounting services designed specifically for healthcare providers. We combine financial expertise with deep understanding of medical practice operations, ensuring accurate bookkeeping, timely reporting, tax optimization, and strategic financial guidance.
+                  MedNLaw provides comprehensive accounting services designed specifically for healthcare providers. We combine financial expertise with deep understanding of medical practice operations, ensuring accurate bookkeeping, timely reporting, tax optimization, and strategic financial guidance.
                 </p>
               </div>
             </div>
@@ -483,7 +483,7 @@ const AccountingServicesPage = () => {
                   Financial management in healthcare is uniquely complex, requiring expertise in both accounting principles and healthcare operations. From insurance reimbursement tracking to regulatory compliance, medical practices face financial challenges that demand specialized knowledge.
                 </p>
                 <p>
-                  MednLaw bridges this gap with comprehensive accounting services designed specifically for healthcare providers. We understand the financial intricacies of medical practices—from revenue cycle management to healthcare-specific tax considerations—and provide accurate, timely financial services that support your operational success.
+                  MedNLaw bridges this gap with comprehensive accounting services designed specifically for healthcare providers. We understand the financial intricacies of medical practices—from revenue cycle management to healthcare-specific tax considerations—and provide accurate, timely financial services that support your operational success.
                 </p>
                 <p>
                   Our goal goes beyond basic bookkeeping. We provide strategic financial insights that help you optimize revenue, control costs, improve cash flow, and make informed business decisions. Your financial health is foundational to delivering excellent patient care, and we're committed to ensuring that foundation is solid.
@@ -503,7 +503,7 @@ const AccountingServicesPage = () => {
             viewport={{ once: true }}
             className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6"
           >
-            Why Choose MednLaw for Healthcare Accounting Services
+            Why Choose MedNLaw for Healthcare Accounting Services
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -512,7 +512,7 @@ const AccountingServicesPage = () => {
             transition={{ delay: 0.1 }}
             className="text-gray-600 max-w-4xl mx-auto leading-relaxed mb-6 sm:mb-10 text-sm sm:text-base px-4"
           >
-            MednLaw brings specialized expertise in healthcare accounting, combining financial acumen with deep understanding of medical practice operations and regulatory requirements. We understand the unique challenges healthcare providers face—from complex insurance reimbursements to healthcare-specific tax considerations. Our team provides accurate, timely financial services while offering strategic guidance that helps you optimize revenue, control costs, and make informed business decisions. We don't just manage your books—we become a trusted financial partner invested in your practice's success and growth.
+            MedNLaw brings specialized expertise in healthcare accounting, combining financial acumen with deep understanding of medical practice operations and regulatory requirements. We understand the unique challenges healthcare providers face—from complex insurance reimbursements to healthcare-specific tax considerations. Our team provides accurate, timely financial services while offering strategic guidance that helps you optimize revenue, control costs, and make informed business decisions. We don't just manage your books—we become a trusted financial partner invested in your practice's success and growth.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -580,7 +580,7 @@ const AccountingServicesPage = () => {
             transition={{ delay: 0.1 }}
             className="text-white/90 leading-relaxed text-sm sm:text-base mb-6 sm:mb-10 max-w-3xl mx-auto px-4"
           >
-            Whether you need tax filing for doctors, GST filing for hospitals, or specialized accounting for diagnostic centers, MednLaw provides reliable and professional support. Partner with expert accountants for healthcare and ensure that your financial systems are efficient, compliant, and future-ready.
+            Whether you need tax filing for doctors, GST filing for hospitals, or specialized accounting for diagnostic centers, MedNLaw provides reliable and professional support. Partner with expert accountants for healthcare and ensure that your financial systems are efficient, compliant, and future-ready.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}

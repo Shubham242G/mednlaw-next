@@ -39,8 +39,22 @@ const sliderSettings = {
   autoplay: true,
   autoplaySpeed: 4000,
   responsive: [
-    { breakpoint: 1024, settings: { slidesToShow: 2 } },
-    { breakpoint: 640, settings: { slidesToShow: 1 } },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      }
+    },
+    {
+      breakpoint: 640,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: "20px",
+      }
+    },
   ],
 };
 
@@ -105,18 +119,39 @@ const DueDiligenceAndValuation = () => {
     { icon: Shield, title: "Enhanced Due Diligence for High-Risk Transactions", desc: "In-depth background verification, forensic financial analysis, and cross-border compliance checks." },
   ];
 
+  // Swiper breakpoints for the regulations section
+  const swiperBreakpoints = {
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 24,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 24,
+    },
+    1280: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Head>
         <title>Due Diligence Services for Healthcare Sector in India | Legal Experts</title>
         <meta name="description" content="Expert due diligence services for healthcare sector in India. Legal, financial & regulatory due diligence for M&A, investments & healthcare partnerships." />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       {faqs.length > 0 && <FAQSchema faqs={faqs} />}   
       
-      {/* Hero Section */}
+      {/* Hero Section - Mobile Optimized */}
       <section
-        className="relative w-full bg-cover bg-center overflow-hidden pt-28 pb-20 px-4"
+        className="relative w-full bg-cover bg-center overflow-hidden pt-20 sm:pt-24 md:pt-28 pb-12 sm:pb-16 md:pb-20 px-4"
         style={{
           backgroundImage: "url('/assets/dueDilligencePhoto.jpg')",
           backgroundAttachment: "fixed",
@@ -131,7 +166,7 @@ const DueDiligenceAndValuation = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-4"
           >
             Due Diligence & Valuation Services for Healthcare
           </motion.h1>
@@ -139,7 +174,7 @@ const DueDiligenceAndValuation = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="text-lg md:text-xl text-white/95 mb-10 leading-relaxed max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-white/95 mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto px-4"
           >
             Comprehensive legal, financial & regulatory due diligence for informed business decisions
           </motion.p>
@@ -147,16 +182,16 @@ const DueDiligenceAndValuation = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"
           >
-            <Link href="/contact">
-              <button className="bg-[#17ada1] hover:bg-[#138f85] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
+            <Link href="/contact" className="w-full sm:w-auto">
+              <button className="w-full sm:w-auto bg-[#17ada1] hover:bg-[#138f85] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
                 Let's Discuss
               </button>
             </Link>
             <button
               onClick={handleWhatsAppClick}
-              className="bg-transparent border-2 border-white hover:bg-white/10 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+              className="w-full sm:w-auto bg-transparent border-2 border-white hover:bg-white/10 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300"
             >
               Schedule a Call
             </button>
@@ -164,13 +199,13 @@ const DueDiligenceAndValuation = () => {
         </div>
       </section>
 
-      {/* What is Due Diligence Under Indian Law */}
-      <section className="py-20 px-4 bg-white">
+      {/* What is Due Diligence Under Indian Law - Mobile Friendly */}
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-[#17ada1] text-white p-10 md:p-12 rounded-2xl shadow-xl">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">What is Due Diligence Under Indian Law?</h2>
-              <div className="space-y-4 leading-relaxed">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="bg-[#17ada1] text-white p-6 sm:p-8 md:p-10 lg:p-12 rounded-2xl shadow-xl order-2 md:order-1">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">What is Due Diligence Under Indian Law?</h2>
+              <div className="space-y-3 sm:space-y-4 leading-relaxed text-sm sm:text-base">
                 <p>
                   Due diligence refers to the systematic investigation and evaluation of a business, individual, or transaction before finalizing a deal. Under Indian law, due diligence plays a crucial role in mergers and acquisitions, private equity investments, healthcare partnerships, and regulatory compliance.
                 </p>
@@ -182,7 +217,7 @@ const DueDiligenceAndValuation = () => {
                 </p>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative order-1 md:order-2">
               <div className="overflow-hidden rounded-2xl shadow-xl">
                 <Image 
                   src="/assets/due.jpg" 
@@ -198,21 +233,21 @@ const DueDiligenceAndValuation = () => {
       </section>
 
       {/* Types of Due Diligence - Cards Slider */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Types of Due Diligence We Offer</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
-              Understanding the types of due diligence is essential for selecting the right approach for your transaction. At MednLaw, we provide specialized services across multiple domains.
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">Types of Due Diligence We Offer</h2>
+            <p className="text-gray-700 max-w-3xl mx-auto text-sm sm:text-base px-4">
+              Understanding the types of due diligence is essential for selecting the right approach for your transaction. At MedNLaw, we provide specialized services across multiple domains.
             </p>
           </motion.div>
 
-          <Slider {...sliderSettings} className="px-4">
+          <Slider {...sliderSettings} className="px-2 sm:px-4">
             {dueDiligenceTypes.map((item, index) => (
               <motion.div
                 key={index}
@@ -220,14 +255,14 @@ const DueDiligenceAndValuation = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="px-3"
+                className="px-2 sm:px-3"
               >
-                <div className="bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-auto">
-                  <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-5">
-                    <item.icon size={32} className="text-[#17ada1]" />
+                <div className="bg-white border-2 border-gray-100 rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-auto">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-3 sm:mb-5">
+                    <item.icon size={24} className="text-[#17ada1] sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h3>
+                  <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -236,21 +271,21 @@ const DueDiligenceAndValuation = () => {
       </section>
 
       {/* Key Benefits - Cards Slider */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Due Diligence is Essential for Business Transactions</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">Why Due Diligence is Essential for Business Transactions</h2>
+            <p className="text-gray-700 max-w-3xl mx-auto text-sm sm:text-base px-4">
               Conducting due diligence is not just a best practice—it is a necessity in India's regulatory environment. Failure to perform proper due diligence can lead to significant risks, including legal disputes, regulatory penalties, and financial losses.
             </p>
           </motion.div>
 
-          <Slider {...sliderSettings} className="px-4">
+          <Slider {...sliderSettings} className="px-2 sm:px-4">
             {benefitsCards.map((item, index) => (
               <motion.div
                 key={index}
@@ -258,14 +293,14 @@ const DueDiligenceAndValuation = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="px-3"
+                className="px-2 sm:px-3"
               >
-                <div className="bg-gray-50 border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-auto">
-                  <div className="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-5">
-                    <item.icon size={32} className="text-[#17ada1]" />
+                <div className="bg-gray-50 border-2 border-gray-100 rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-auto">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-teal-100 rounded-2xl flex items-center justify-center mb-3 sm:mb-5">
+                    <item.icon size={24} className="text-[#17ada1] sm:w-8 sm:h-8" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h3>
+                  <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -274,29 +309,29 @@ const DueDiligenceAndValuation = () => {
       </section>
 
       {/* Our Due Diligence & Valuation Services */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Due Diligence & Valuation Services</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">We offer specialized due diligence and valuation services tailored for the healthcare sector.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">Our Due Diligence & Valuation Services</h2>
+            <p className="text-gray-700 max-w-3xl mx-auto text-sm sm:text-base px-4">We offer specialized due diligence and valuation services tailored for the healthcare sector.</p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {serviceCards.map((item, index) => (
               <motion.div
                 key={index}
                 whileHover={{ y: -5 }}
-                className="bg-white border-2 border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300"
+                className="bg-white border-2 border-gray-100 p-4 sm:p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
-                  <item.icon className="text-[#17ada1]" size={28} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-3 sm:mb-4">
+                  <item.icon className="text-[#17ada1]" size={20} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h3>
+                <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -304,132 +339,111 @@ const DueDiligenceAndValuation = () => {
       </section>
 
       {/* Due Diligence Law in India - Key Regulations */}
-      <section className="py-20 px-4 bg-white overflow-hidden">
-  <div className="max-w-7xl mx-auto">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="text-center mb-12"
-    >
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-        Due Diligence Law in India – Key Regulations
-      </h2>
-      <p className="text-gray-600 max-w-3xl mx-auto">
-        Due diligence law in India is influenced by multiple legal frameworks that our experts meticulously review.
-      </p>
-    </motion.div>
-
-    <Swiper
-      modules={[Navigation, Pagination, Autoplay]}
-      spaceBetween={24}
-      slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-      }}
-      breakpoints={{
-        // When window width is >= 640px
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        // When window width is >= 768px
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 24,
-        },
-        // When window width is >= 1024px
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 24,
-        },
-        // When window width is >= 1280px
-        1280: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
-      }}
-      className="due-diligence-slider"
-    >
-      {/* Slide 1 - Companies Act */}
-      <SwiperSlide>
-        <motion.div 
-          whileHover={{ y: -5 }} 
-          className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
-        >
-          <Building className="text-[#17ada1] w-10 h-10 mb-3" />
-          <h3 className="text-lg font-bold text-gray-900 mb-2">Companies Act, 2013</h3>
-          <p className="text-gray-500 text-sm">Corporate governance, compliance, and statutory requirements for businesses.</p>
-        </motion.div>
-      </SwiperSlide>
-
-      {/* Slide 2 - SEBI Regulations */}
-      <SwiperSlide>
-        <motion.div 
-          whileHover={{ y: -5 }} 
-          className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
-        >
-          <Shield className="text-[#17ada1] w-10 h-10 mb-3" />
-          <h3 className="text-lg font-bold text-gray-900 mb-2">SEBI Regulations</h3>
-          <p className="text-gray-500 text-sm">Securities and Exchange Board of India rules for listed companies and investments.</p>
-        </motion.div>
-      </SwiperSlide>
-
-      {/* Slide 3 - FEMA */}
-      <SwiperSlide>
-        <motion.div 
-          whileHover={{ y: -5 }} 
-          className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
-        >
-          <Scale className="text-[#17ada1] w-10 h-10 mb-3" />
-          <h3 className="text-lg font-bold text-gray-900 mb-2">FEMA</h3>
-          <p className="text-gray-500 text-sm">Foreign Exchange Management Act for cross-border transactions and investments.</p>
-        </motion.div>
-      </SwiperSlide>
-
-      {/* Slide 4 - Income Tax Act */}
-      <SwiperSlide>
-        <motion.div 
-          whileHover={{ y: -5 }} 
-          className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
-        >
-          <FileText className="text-[#17ada1] w-10 h-10 mb-3" />
-          <h3 className="text-lg font-bold text-gray-900 mb-2">Income Tax Act</h3>
-          <p className="text-gray-500 text-sm">Tax compliance, liabilities, and historical tax assessment reviews.</p>
-        </motion.div>
-      </SwiperSlide>
-
-      {/* Slide 5 - Clinical Establishments Act */}
-      <SwiperSlide>
-        <motion.div 
-          whileHover={{ y: -5 }} 
-          className="bg-gray-50 border border-gray-100 p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
-        >
-          <Heart className="text-[#17ada1] w-10 h-10 mb-3" />
-          <h3 className="text-lg font-bold text-gray-900 mb-2">Clinical Establishments Act</h3>
-          <p className="text-gray-500 text-sm">Sector-specific regulations for healthcare facilities and medical practices.</p>
-        </motion.div>
-      </SwiperSlide>
-    </Swiper>
-  </div>
-</section>
-
-      {/* Our Due Diligence Process */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Due Diligence Process</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">At MednLaw, our structured due diligence process ensures thorough evaluation and accurate reporting.</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
+              Due Diligence Law in India – Key Regulations
+            </h2>
+            <p className="text-gray-700 max-w-3xl mx-auto text-sm sm:text-base px-4">
+              Due diligence law in India is influenced by multiple legal frameworks that our experts meticulously review.
+            </p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={16}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={swiperBreakpoints}
+            className="due-diligence-slider px-2"
+          >
+            {/* Slide 1 - Companies Act */}
+            <SwiperSlide>
+              <motion.div 
+                whileHover={{ y: -5 }} 
+                className="bg-gray-50 border border-gray-100 p-4 sm:p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
+              >
+                <Building className="text-[#17ada1] w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3" />
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Companies Act, 2013</h3>
+                <p className="text-gray-600 text-xs sm:text-sm">Corporate governance, compliance, and statutory requirements for businesses.</p>
+              </motion.div>
+            </SwiperSlide>
+
+            {/* Slide 2 - SEBI Regulations */}
+            <SwiperSlide>
+              <motion.div 
+                whileHover={{ y: -5 }} 
+                className="bg-gray-50 border border-gray-100 p-4 sm:p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
+              >
+                <Shield className="text-[#17ada1] w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3" />
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">SEBI Regulations</h3>
+                <p className="text-gray-600 text-xs sm:text-sm">Securities and Exchange Board of India rules for listed companies and investments.</p>
+              </motion.div>
+            </SwiperSlide>
+
+            {/* Slide 3 - FEMA */}
+            <SwiperSlide>
+              <motion.div 
+                whileHover={{ y: -5 }} 
+                className="bg-gray-50 border border-gray-100 p-4 sm:p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
+              >
+                <Scale className="text-[#17ada1] w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3" />
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">FEMA</h3>
+                <p className="text-gray-600 text-xs sm:text-sm">Foreign Exchange Management Act for cross-border transactions and investments.</p>
+              </motion.div>
+            </SwiperSlide>
+
+            {/* Slide 4 - Income Tax Act */}
+            <SwiperSlide>
+              <motion.div 
+                whileHover={{ y: -5 }} 
+                className="bg-gray-50 border border-gray-100 p-4 sm:p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
+              >
+                <FileText className="text-[#17ada1] w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3" />
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Income Tax Act</h3>
+                <p className="text-gray-600 text-xs sm:text-sm">Tax compliance, liabilities, and historical tax assessment reviews.</p>
+              </motion.div>
+            </SwiperSlide>
+
+            {/* Slide 5 - Clinical Establishments Act */}
+            <SwiperSlide>
+              <motion.div 
+                whileHover={{ y: -5 }} 
+                className="bg-gray-50 border border-gray-100 p-4 sm:p-6 rounded-xl hover:border-[#17ada1] hover:shadow-xl transition-all duration-300 h-full"
+              >
+                <Heart className="text-[#17ada1] w-8 h-8 sm:w-10 sm:h-10 mb-2 sm:mb-3" />
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Clinical Establishments Act</h3>
+                <p className="text-gray-600 text-xs sm:text-sm">Sector-specific regulations for healthcare facilities and medical practices.</p>
+              </motion.div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
+
+      {/* Our Due Diligence Process */}
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">Our Due Diligence Process</h2>
+            <p className="text-gray-700 max-w-3xl mx-auto text-sm sm:text-base px-4">At MedNLaw, our structured due diligence process ensures thorough evaluation and accurate reporting.</p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
             {[
               { step: "Scope Definition", desc: "We define the scope of due diligence based on the nature of the transaction and client requirements." },
               { step: "Data Collection", desc: "Our team gathers all relevant documents, including contracts, financial records, and compliance filings." },
@@ -440,13 +454,13 @@ const DueDiligenceAndValuation = () => {
               <motion.div
                 key={index}
                 whileHover={{ y: -5 }}
-                className="text-center group"
+                className="text-center group px-2"
               >
-                <div className="w-20 h-20 bg-[#17ada1] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <span className="text-white text-2xl font-bold">{index + 1}</span>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#17ada1] rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-lg group-hover:shadow-xl transition-all duration-300">
+                  <span className="text-white text-xl sm:text-2xl font-bold">{index + 1}</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.step}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">{item.step}</h3>
+                <p className="text-gray-600 text-xs leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -454,13 +468,14 @@ const DueDiligenceAndValuation = () => {
       </section>
 
       {/* Enhanced Due Diligence for High-Risk Transactions */}
-      <section className="py-20 px-4 bg-[#17ada1] text-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#17ada1] text-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="order-2 md:order-1"
             >
               <div className="overflow-hidden rounded-2xl shadow-xl">
                 <Image 
@@ -476,9 +491,10 @@ const DueDiligenceAndValuation = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="order-1 md:order-2"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Enhanced Due Diligence for High-Risk Transactions</h2>
-              <div className="space-y-4 text-white/95">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Enhanced Due Diligence for High-Risk Transactions</h2>
+              <div className="space-y-3 sm:space-y-4 text-white/95 text-sm sm:text-base">
                 <p>
                   In certain situations, standard due diligence may not be sufficient. Enhanced due diligence is required when dealing with high-value transactions, cross-border investments, or entities with complex structures.
                 </p>
@@ -495,24 +511,24 @@ const DueDiligenceAndValuation = () => {
       </section>
 
       {/* Why Choose MednLaw */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 px-4"
           >
-            Why Choose MednLaw for Due Diligence Services
+            Why Choose MedNLaw for Due Diligence Services
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-gray-600 max-w-4xl mx-auto leading-relaxed mb-10 text-base"
+            className="text-gray-700 max-w-4xl mx-auto leading-relaxed mb-6 sm:mb-10 text-sm sm:text-base px-4"
           >
-            Selecting the right partner for due diligence is critical to the success of your transaction. MednLaw stands out due to extensive experience in due diligence across industries, strong understanding of Indian due diligence law, customized solutions based on transaction requirements, expertise in healthcare and regulated sectors, and accurate, timely, and actionable reporting. Our team ensures that your due diligence process is thorough, efficient, and aligned with your business goals.
+            Selecting the right partner for due diligence is critical to the success of your transaction. MedNLaw stands out due to extensive experience in due diligence across industries, strong understanding of Indian due diligence law, customized solutions based on transaction requirements, expertise in healthcare and regulated sectors, and accurate, timely, and actionable reporting. Our team ensures that your due diligence process is thorough, efficient, and aligned with your business goals.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -522,7 +538,7 @@ const DueDiligenceAndValuation = () => {
           >
             <button
               onClick={handleWhatsAppClick}
-              className="bg-[#17ada1] hover:bg-[#138f85] text-white px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl cursor-pointer"
+              className="bg-[#17ada1] hover:bg-[#138f85] text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 shadow-xl hover:shadow-2xl cursor-pointer w-full sm:w-auto"
             >
               Talk to a Specialist
             </button>
@@ -531,18 +547,18 @@ const DueDiligenceAndValuation = () => {
       </section>
 
       {/* When Do You Need Due Diligence Services */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">When Do You Need Due Diligence Services in Healthcare?</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">You should consider professional due diligence services in the following scenarios:</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">When Do You Need Due Diligence Services in Healthcare?</h2>
+            <p className="text-gray-700 max-w-3xl mx-auto text-sm sm:text-base px-4">You should consider professional due diligence services in the following scenarios:</p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {[
               "Mergers and Acquisitions",
               "Investment or Funding Rounds",
@@ -554,21 +570,21 @@ const DueDiligenceAndValuation = () => {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.02 }}
-                className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border-l-4 border-[#17ada1]"
+                className="flex items-center gap-2 sm:gap-3 bg-white p-3 sm:p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border-l-4 border-[#17ada1]"
               >
-                <CheckCircle className="text-[#17ada1]" size={20} />
-                <span className="text-gray-700 font-medium">{item}</span>
+                <CheckCircle className="text-[#17ada1] w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                <span className="text-gray-700 font-medium text-xs sm:text-sm">{item}</span>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Trusted By */}
-      <div className="relative overflow-hidden py-16 bg-white">
-        <h2 className="text-2xl font-bold text-center text-gray-700 mb-10">Trusted By Leading Healthcare Institutions</h2>
+      {/* Trusted By - Mobile Optimized */}
+      <div className="relative overflow-hidden py-12 sm:py-16 bg-white">
+        <h2 className="text-xl sm:text-2xl font-bold text-center text-gray-700 mb-6 sm:mb-10 px-4">Trusted By Leading Healthcare Institutions</h2>
         <motion.div
-          className="flex gap-12 md:gap-16 items-center"
+          className="flex gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-center"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
             duration: 25,
@@ -580,15 +596,15 @@ const DueDiligenceAndValuation = () => {
             <motion.div
               key={index}
               whileHover={{ scale: 1.1 }}
-              className="flex-shrink-0 w-60 h-40 flex items-center justify-center group"
+              className="flex-shrink-0 w-40 sm:w-48 md:w-60 h-24 sm:h-32 md:h-40 flex items-center justify-center group"
             >
-              <div className="relative w-full h-full flex items-center justify-center bg-white rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300 border border-gray-100 group-hover:border-[#17ADA1]/30">
+              <div className="relative w-full h-full flex items-center justify-center bg-white rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300 border border-gray-100 group-hover:border-[#17ADA1]/30 p-4">
                 <Image
                   src={partner.icon}
                   alt={`Partner ${partner.id}`}
-                  width={200}
-                  height={96}
-                  className="max-h-24 max-w-48 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                  width={160}
+                  height={80}
+                  className="max-h-16 sm:max-h-20 md:max-h-24 max-w-32 sm:max-w-40 md:max-w-48 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             </motion.div>
@@ -597,13 +613,13 @@ const DueDiligenceAndValuation = () => {
       </div>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-[#17ada1] to-[#138f85] text-white">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-r from-[#17ada1] to-[#138f85] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 px-4"
           >
             Need Due Diligence Services for Your Healthcare Business?
           </motion.h2>
@@ -612,7 +628,7 @@ const DueDiligenceAndValuation = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-white/90 leading-relaxed text-base mb-10 max-w-3xl mx-auto"
+            className="text-white/90 leading-relaxed text-sm sm:text-base mb-6 sm:mb-10 max-w-3xl mx-auto px-4"
           >
             Whether you're planning an acquisition, entering a partnership, or need regulatory compliance review, our due diligence experts are ready to support you throughout your healthcare journey.
           </motion.p>
@@ -622,9 +638,9 @@ const DueDiligenceAndValuation = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Link href="/contact">
-              <button className="bg-white hover:bg-gray-100 text-[#17ada1] px-12 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 inline-flex items-center gap-2">
-                <MessageCircle size={20} />
+            <Link href="/contact" className="block sm:inline-block">
+              <button className="w-full sm:w-auto bg-white hover:bg-gray-100 text-[#17ada1] px-6 sm:px-8 md:px-12 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1 inline-flex items-center justify-center gap-2">
+                <MessageCircle size={18} />
                 Let's Connect
               </button>
             </Link>
