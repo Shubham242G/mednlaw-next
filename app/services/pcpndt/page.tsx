@@ -534,7 +534,7 @@ const PCPNDTPage = () => {
         </div>
       </section>
 
-      <WebsiteFAQ pageUrl="/services/pcpndt-act-lawyers" />
+      <WebsiteFAQ pageUrl="/services/pcpndt" />
       
     </div>
   );
